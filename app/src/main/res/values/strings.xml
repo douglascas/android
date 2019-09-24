@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">TinderDog</string>
+    <string name="app_name">Adapter</string>
+    <string name="texto_cabecalho">Cachorros</string>
+    <string name="nenhum_dog">Nenhum cachorro cadastrado</string>
+    <plurals name="texto_rodape">
+        <item quantity="one">1 cachorro</item>
+        <item quantity="other">%d cachorros</item>
+    </plurals>
 </resources>

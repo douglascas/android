@@ -1,0 +1,8 @@
+<resources>
+    <array name="fotos_dogs">
+        <item>@drawable/dog1</item>
+        <item>@drawable/dog2</item>
+        <item>@drawable/dog3</item>
+        <item>@drawable/dog4</item>
+    </array>
+</resources>

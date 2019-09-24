@@ -1,4 +1,4 @@
-package com.example.tinderdog;
+package com.example.android;
 
 import org.junit.Test;
 

@@ -2,6 +2,11 @@
     <string name="app_name">Adapter</string>
     <string name="texto_cabecalho">Cachorros</string>
     <string name="nenhum_dog">Nenhum cachorro cadastrado</string>
+
+    <string name="porte_grande">Grande</string>
+    <string name="porte_medio">Medio</string>
+    <string name="porte_pequeno">Pequeno</string>
+
     <plurals name="texto_rodape">
         <item quantity="one">1 cachorro</item>
         <item quantity="other">%d cachorros</item>

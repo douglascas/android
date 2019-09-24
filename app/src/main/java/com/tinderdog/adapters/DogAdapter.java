@@ -20,8 +20,8 @@ import java.util.List;
 
 public class DogAdapter extends BaseAdapter {
 
-    Context ctx;
-    List<Dog>dogs;
+    private Context ctx;
+    private List<Dog>dogs;
 
     public DogAdapter(Context ctx,List<Dog> dogs){
         this.ctx = ctx;
@@ -59,9 +59,9 @@ public class DogAdapter extends BaseAdapter {
 
             holder = new ViewHolder(); //cria o holder apenas uma vez
 
-            holder.imgDog = (ImageView) convertView.findViewById(R.id.imgDog);
-            holder.txtNome = (TextView) convertView.findViewById(R.id.txtNome);
-            holder.txtIdade = (TextView) convertView.findViewById(R.id.txtIdade);
+            holder.imgDog = convertView.findViewById(R.id.imgDog);
+            holder.txtNome = convertView.findViewById(R.id.txtNome);
+            holder.txtIdade = convertView.findViewById(R.id.txtIdade);
 
             convertView.setTag(holder);
 
@@ -77,9 +77,9 @@ public class DogAdapter extends BaseAdapter {
         TypedArray fotos_dogs = res.obtainTypedArray(R.array.fotos_dogs);
 
         holder.imgDog.setImageDrawable(
-                fotos_dogs.getDrawable(dog.id));
-        holder.txtNome.setText(dog.nome);
-        holder.txtIdade.setText(dog.idade);
+                fotos_dogs.getDrawable(dog.getId()));
+        holder.txtNome.setText(dog.getNome());
+        holder.txtIdade.setText(dog.getIdade()+"");
 
         return convertView;
 

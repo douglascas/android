@@ -21,25 +21,24 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
 
-    List<Dog> dogs;
-    DogAdapter adapter;
-    ListView listView;
+    private  List<Dog> dogs;
+    private DogAdapter adapter;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listView = (ListView)findViewById(R.id.list);
+        listView = findViewById(R.id.list);
         listView.setEmptyView(findViewById(android.R.id.empty));
 
 
 
-        dogs = new ArrayList<Dog>();
-
-        dogs.add(new Dog(1,"bob",0001,"branco","1","medio"));
-        dogs.add(new Dog(2,"mel",0001,"preto","2","pequeno"));
-        dogs.add(new Dog(3,"caramelo",0001,"amarelo","1","grande"));
-        dogs.add(new Dog(4,"thor",0001,"branco","4","medio"));
+        dogs = new ArrayList<>();
+        dogs.add(new Dog(1,"bob","0001","branco",1,"medio"));
+        dogs.add(new Dog(2,"mel","0001","preto",2,"pequeno"));
+        dogs.add(new Dog(3,"caramelo","0001","amarelo", 1,"grande"));
+        dogs.add(new Dog(4,"thor","0001","branco",4,"medio"));
 
         adapter = new DogAdapter(this, dogs);
 
@@ -71,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                                     int position, long id) {
                 Dog dog = (Dog) adapterView.getItemAtPosition(position);
                 if (dog != null) {
-                    Toast.makeText(MainActivity.this, dog.id + "-" + dog.nome,
+                    Toast.makeText(MainActivity.this, dog.getId() + "-" + dog.getNome(),
                             Toast.LENGTH_SHORT).show(); //notificacao toast
                     //aqui n deleta
                     dogs.remove(dog);

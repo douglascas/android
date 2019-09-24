@@ -1,4 +1,4 @@
-package com.example.android;
+package com.tinderdog.adapters;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -12,7 +12,8 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.Dog;
+import com.tinderdog.R;
+import com.tinderdog.models.Dog;
 
 import java.util.List;
 

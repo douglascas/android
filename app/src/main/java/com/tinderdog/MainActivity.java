@@ -1,23 +1,19 @@
-package com.example.android;
+package com.tinderdog;
 
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+
+import com.tinderdog.adapters.DogAdapter;
+import com.tinderdog.models.Dog;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Gravity;
 import android.graphics.Color;
 import android.widget.AdapterView;
-import androidx.appcompat.widget.Toolbar;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.ListView;
 
 import java.util.List;
 import java.util.ArrayList;

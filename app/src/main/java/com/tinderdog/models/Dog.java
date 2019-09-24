@@ -1,4 +1,4 @@
-package com.example.android;
+package com.tinderdog.models;
 
 public class Dog {
     public int id;

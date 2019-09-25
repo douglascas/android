@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.tinderdog.R;
 import com.tinderdog.models.Dog;
+import com.tinderdog.util.LoggerWrapper;
 
 import java.util.List;
 
@@ -67,8 +68,7 @@ public class DogAdapter extends BaseAdapter {
 
         }
         else{ //view ja foi criada
-
-            Log.d("NGVL", "View existente => position: "+ position);
+            LoggerWrapper.log("View existente => position: "+ position);
             holder = (ViewHolder)convertView.getTag();
         }
 

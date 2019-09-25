@@ -2,30 +2,18 @@ package com.tinderdog.models.usuario;
 
 public class Endereco {
 
-    private int id;
     private String cep;
     private String logradouro;
     private String bairro;
     private String cidade;
     private String estado;
-    private String pais;
 
-    public Endereco(int id, String cep, String logradouro, String bairro, String cidade, String estado, String pais) {
-        this.id = id;
+    public Endereco(String cep, String logradouro, String bairro, String cidade, String estado) {
         this.cep = cep;
         this.logradouro = logradouro;
         this.bairro = bairro;
         this.cidade = cidade;
         this.estado = estado;
-        this.pais = pais;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getCep() {
@@ -68,11 +56,4 @@ public class Endereco {
         this.estado = estado;
     }
 
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
 }

@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import com.tinderdog.adapters.DogAdapter;
 import com.tinderdog.models.Dog;
+import com.tinderdog.models.usuario.Endereco;
+import com.tinderdog.models.usuario.Pessoa;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Gravity;
@@ -33,12 +35,14 @@ public class MainActivity extends AppCompatActivity {
         listView.setEmptyView(findViewById(android.R.id.empty));
 
 
+        Pessoa donoExemplo = new Pessoa(-1, null, "NomePessoa", "","",
+                new Endereco("","","","",""),null);
 
         dogs = new ArrayList<>();
-        dogs.add(new Dog(1,"bob","0001","branco",1,"medio"));
-        dogs.add(new Dog(2,"mel","0001","preto",2,"pequeno"));
-        dogs.add(new Dog(3,"caramelo","0001","amarelo", 1,"grande"));
-        dogs.add(new Dog(4,"thor","0001","branco",4,"medio"));
+        dogs.add(new Dog(1, donoExemplo, "bob", "branco", 1, "medio"));
+        dogs.add(new Dog(2, donoExemplo, "mel", "preto", 2, "pequeno"));
+        dogs.add(new Dog(3, donoExemplo, "caramelo", "amarelo", 1, "grande"));
+        dogs.add(new Dog(4, donoExemplo, "thor", "branco", 4, "medio"));
 
         adapter = new DogAdapter(this, dogs);
 

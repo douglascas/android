@@ -1,19 +1,20 @@
 package com.tinderdog.models;
 
+import com.tinderdog.models.usuario.Pessoa;
+
 public class Dog {
 
     private int id;
     private String nome;
-    private String cpf_dono;
     private String cor_pelagem;
     // ano.mes ex: 1.2 (1 ano e 2 meses)
     private double idade ;
     private String porte;
+    private Pessoa dono;
 
-    public Dog(int id,String nome,String cpf_dono, String cor_pelagem, double idade, String porte) {
+    public Dog(int id, Pessoa dono, String nome, String cor_pelagem, double idade, String porte) {
         this.id = id;
         this.nome = nome;
-        this.cpf_dono = cpf_dono;
         this.cor_pelagem = cor_pelagem;
         this.idade = idade;
         this.porte = porte;
@@ -33,14 +34,6 @@ public class Dog {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getCpf_dono() {
-        return cpf_dono;
-    }
-
-    public void setCpf_dono(String cpf_dono) {
-        this.cpf_dono = cpf_dono;
     }
 
     public String getCor_pelagem() {
@@ -65,5 +58,13 @@ public class Dog {
 
     public void setPorte(String porte) {
         this.porte = porte;
+    }
+
+    public Pessoa getDono() {
+        return dono;
+    }
+
+    public void setDono(Pessoa dono) {
+        this.dono = dono;
     }
 }

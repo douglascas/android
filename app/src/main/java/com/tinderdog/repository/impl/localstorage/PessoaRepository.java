@@ -52,33 +52,59 @@ public class PessoaRepository implements IPessoaRepository {
     public Pessoa getById(int id) throws PessoaNotFoundException {
         Cursor c = dbh.getReadableDatabase()
                 .rawQuery("SELECT * FROM users AS u INNER JOIN user_adresses AS wa ON wa.user_id = u.id WHERE i.id = ?",
+                        new String[]{id + ""});
+        if (!c.moveToNext()) {
+            throw new PessoaNotFoundException();
+        }
+        return createPessoa(c);
+    }
+
+    @Override
+    public void update(Pessoa pessoa) throws UpdatePessoaException {
+        try {
+            dbh.getWritableDatabase().execSQL("UPDATE users SET name = ?, email = ?, password = ?, cpf = ?, birth_date = ? WHERE id = ?",
+                    new Object[]{
+                            pessoa.getNome(),
+                            pessoa.getLogin().getEmail(),
+                            pessoa.getLogin().getSenha(),
+                            pessoa.getCpf(),
+                            pessoa.getDt_nascimento(),
+                            pessoa.getId()
+                    });
+            dbh.getWritableDatabase().execSQL("UPDATE user_adresses SET cep = ?, logradouro = ?, bairro = ?, cidade = ?, estado = ? WHERE user_id =?;",
+                    new Object[]{
+                            pessoa.getEndereco().getCep(),
+                            pessoa.getEndereco().getLogradouro(),
+                            pessoa.getEndereco().getBairro(),
+                            pessoa.getEndereco().getCidade(),
+                            pessoa.getEndereco().getEstado()
+                    });
+        } catch (Exception e){
+            throw new UpdatePessoaException();
+        }
+    }
+
+    @Override
+    public void insert(Pessoa pessoa) throws InsertPessoaException {
+
+    }
+
+    @Override
+    public void delete(Pessoa pessoa) throws PessoaNotFoundException {
+        deleteById(pessoa.getId());
+    }
+
+    @Override
+    public void deleteById(int id) throws PessoaNotFoundException {
+        Cursor c = dbh.getReadableDatabase()
+                .rawQuery("SELECT * FROM users AS u INNER JOIN user_adresses AS wa ON wa.user_id = u.id WHERE i.id = ?",
                         new String[]{id+""});
         if (!c.moveToNext()){
             throw new PessoaNotFoundException();
         }
-        Pessoa pessoa = createPessoa(c);
+        int pessoaId = c.getInt(c.getColumnIndex("id"));
+        dbh.getWritableDatabase().execSQL("DELETE FROM users WHERE id = ?;", new Object[]{pessoaId});
         c.close();
-        return pessoa;
-    }
-
-    @Override
-    public void update(Pessoa dog) throws UpdatePessoaException {
-
-    }
-
-    @Override
-    public void insert(Pessoa dog) throws InsertPessoaException {
-
-    }
-
-    @Override
-    public void delete(Pessoa dog) throws PessoaNotFoundException {
-
-    }
-
-    @Override
-    public void deleteById(Pessoa dog) throws PessoaNotFoundException {
-
     }
 
     private Pessoa createPessoa(Cursor c){

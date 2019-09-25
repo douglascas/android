@@ -15,5 +15,5 @@ public interface IPessoaRepository {
     void update(Pessoa pessoa) throws UpdatePessoaException;
     void insert(Pessoa pessoa) throws InsertPessoaException;
     void delete(Pessoa pessoa) throws PessoaNotFoundException;
-    void deleteById(Pessoa pessoa) throws PessoaNotFoundException;
+    void deleteById(int pessoa) throws PessoaNotFoundException;
 }

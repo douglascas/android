@@ -12,6 +12,10 @@ public class Dog {
     private String porte;
     private Pessoa dono;
 
+    public Dog(){
+
+    }
+
     public Dog(int id, Pessoa dono, String nome, String cor_pelagem, double idade, String porte) {
         this.id = id;
         this.nome = nome;

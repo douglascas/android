@@ -6,6 +6,10 @@ public class Login {
     private String email;
     private String senha;
 
+    public Login(){
+
+    }
+
     public Login(int id,String email,String senha) {
         this.id = id;
         this.email = email;

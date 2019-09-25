@@ -14,6 +14,10 @@ public class Pessoa {
     private Endereco endereco;
     private List<Dog> dogs;
 
+    public Pessoa(){
+
+    }
+
     public Pessoa(int id, Login login, String nome, String cpf, String dt_nascimento, Endereco endereco, List<Dog> dogs) {
         this.id = id;
         this.login = login;

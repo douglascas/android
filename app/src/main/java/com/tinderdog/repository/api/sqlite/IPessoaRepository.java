@@ -1,9 +1,9 @@
-package com.tinderdog.repository.api.localstorage;
+package com.tinderdog.repository.api.sqlite;
 
 import com.tinderdog.models.usuario.Pessoa;
-import com.tinderdog.repository.exceptions.pessoa.InsertPessoaException;
-import com.tinderdog.repository.exceptions.pessoa.PessoaNotFoundException;
-import com.tinderdog.repository.exceptions.pessoa.UpdatePessoaException;
+import com.tinderdog.repository.exception.pessoa.InsertPessoaException;
+import com.tinderdog.repository.exception.pessoa.PessoaNotFoundException;
+import com.tinderdog.repository.exception.pessoa.UpdatePessoaException;
 
 import java.util.List;
 

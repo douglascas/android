@@ -1,11 +1,11 @@
-package com.tinderdog.repository.impl.localstorage;
+package com.tinderdog.repository.impl.sqlite;
 
 import com.tinderdog.models.Dog;
-import com.tinderdog.repository.api.localstorage.IDogRepository;
-import com.tinderdog.repository.exceptions.dog.DogNotFoundException;
-import com.tinderdog.repository.exceptions.dog.InsertDogException;
-import com.tinderdog.repository.exceptions.dog.UpdateDogException;
-import com.tinderdog.repository.helper.localstorage.LocalDBHelper;
+import com.tinderdog.repository.api.sqlite.IDogRepository;
+import com.tinderdog.repository.exception.dog.DogNotFoundException;
+import com.tinderdog.repository.exception.dog.InsertDogException;
+import com.tinderdog.repository.exception.dog.UpdateDogException;
+import com.tinderdog.repository.helper.sqlite.LocalDBHelper;
 
 import java.util.List;
 

@@ -1,15 +1,15 @@
-package com.tinderdog.repository.impl.localstorage;
+package com.tinderdog.repository.impl.sqlite;
 
 import android.database.Cursor;
 
 import com.tinderdog.models.usuario.Endereco;
 import com.tinderdog.models.usuario.Login;
 import com.tinderdog.models.usuario.Pessoa;
-import com.tinderdog.repository.api.localstorage.IPessoaRepository;
-import com.tinderdog.repository.exceptions.pessoa.InsertPessoaException;
-import com.tinderdog.repository.exceptions.pessoa.PessoaNotFoundException;
-import com.tinderdog.repository.exceptions.pessoa.UpdatePessoaException;
-import com.tinderdog.repository.helper.localstorage.LocalDBHelper;
+import com.tinderdog.repository.api.sqlite.IPessoaRepository;
+import com.tinderdog.repository.exception.pessoa.InsertPessoaException;
+import com.tinderdog.repository.exception.pessoa.PessoaNotFoundException;
+import com.tinderdog.repository.exception.pessoa.UpdatePessoaException;
+import com.tinderdog.repository.helper.sqlite.LocalDBHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class PessoaRepository implements IPessoaRepository {
                 .rawQuery("SELECT * FROM users AS u INNER JOIN user_adresses AS wa ON wa.user_id = u.id",null);
         List<Pessoa> pessoas = new ArrayList<>();
         while (c.moveToNext()){
-            pessoas.add(createPessoa(c));
+            pessoas.add(createPessoaInstance(c));
         }
         c.close();
         return pessoas;
@@ -42,7 +42,7 @@ public class PessoaRepository implements IPessoaRepository {
                         new String[]{init+"", end+""});
         List<Pessoa> pessoas = new ArrayList<>();
         while (c.moveToNext()){
-            pessoas.add(createPessoa(c));
+            pessoas.add(createPessoaInstance(c));
         }
         c.close();
         return pessoas;
@@ -56,7 +56,7 @@ public class PessoaRepository implements IPessoaRepository {
         if (!c.moveToNext()) {
             throw new PessoaNotFoundException();
         }
-        return createPessoa(c);
+        return createPessoaInstance(c);
     }
 
     @Override
@@ -86,7 +86,26 @@ public class PessoaRepository implements IPessoaRepository {
 
     @Override
     public void insert(Pessoa pessoa) throws InsertPessoaException {
-
+        try{
+            dbh.getWritableDatabase().execSQL("INSERT INTO users (name,email,password,cpf,birth_date) VALUES (?,?,?,?,?);",
+                    new Object[]{
+                            pessoa.getNome(),
+                            pessoa.getLogin().getEmail(),
+                            pessoa.getLogin().getSenha(),
+                            pessoa.getCpf(),
+                            pessoa.getDt_nascimento(),
+                    });
+            dbh.getWritableDatabase().execSQL("INSERT INTO user_adresses (user_id,cep,logradouro,bairro,cidade,estado) VALUES (last_insert_rowid(),?,?,?,?,?);",
+                    new Object[]{
+                            pessoa.getEndereco().getCep(),
+                            pessoa.getEndereco().getLogradouro(),
+                            pessoa.getEndereco().getBairro(),
+                            pessoa.getEndereco().getCidade(),
+                            pessoa.getEndereco().getEstado()
+                    });
+        }catch (Exception e){
+           throw new InsertPessoaException();
+        }
     }
 
     @Override
@@ -107,7 +126,7 @@ public class PessoaRepository implements IPessoaRepository {
         c.close();
     }
 
-    private Pessoa createPessoa(Cursor c){
+    private Pessoa createPessoaInstance(Cursor c){
         Pessoa pessoa = new Pessoa();
         Endereco endereco = new Endereco();
         Login login = new Login();

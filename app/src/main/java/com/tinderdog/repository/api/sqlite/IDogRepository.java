@@ -1,9 +1,9 @@
-package com.tinderdog.repository.api.localstorage;
+package com.tinderdog.repository.api.sqlite;
 
 import com.tinderdog.models.Dog;
-import com.tinderdog.repository.exceptions.dog.DogNotFoundException;
-import com.tinderdog.repository.exceptions.dog.InsertDogException;
-import com.tinderdog.repository.exceptions.dog.UpdateDogException;
+import com.tinderdog.repository.exception.dog.DogNotFoundException;
+import com.tinderdog.repository.exception.dog.InsertDogException;
+import com.tinderdog.repository.exception.dog.UpdateDogException;
 
 import java.util.List;
 

@@ -7,6 +7,7 @@ import com.tinderdog.adapters.DogAdapter;
 import com.tinderdog.models.Dog;
 import com.tinderdog.models.usuario.Endereco;
 import com.tinderdog.models.usuario.Pessoa;
+import com.tinderdog.repository.facotry.sqlite.PessoaRepositoryFactory;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Gravity;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         listView = findViewById(R.id.list);
         listView.setEmptyView(findViewById(android.R.id.empty));
+
 
 
         Pessoa donoExemplo = new Pessoa(-1, null, "NomePessoa", "","",

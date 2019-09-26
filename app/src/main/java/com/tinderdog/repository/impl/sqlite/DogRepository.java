@@ -11,7 +11,7 @@ import com.tinderdog.repository.exception.dog.DogNotHaveOwnerException;
 import com.tinderdog.repository.exception.dog.InsertDogException;
 import com.tinderdog.repository.exception.dog.UpdateDogException;
 import com.tinderdog.repository.exception.pessoa.PessoaNotFoundException;
-import com.tinderdog.repository.facotry.sqlite.PessoaRepositoryFactory;
+import com.tinderdog.repository.factoy.PessoaRepositoryFactory;
 import com.tinderdog.repository.helper.sqlite.LocalDBHelper;
 
 import java.util.ArrayList;

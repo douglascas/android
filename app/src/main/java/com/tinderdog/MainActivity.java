@@ -7,7 +7,6 @@ import com.tinderdog.adapters.DogAdapter;
 import com.tinderdog.models.Dog;
 import com.tinderdog.models.usuario.Endereco;
 import com.tinderdog.models.usuario.Pessoa;
-import com.tinderdog.repository.facotry.sqlite.PessoaRepositoryFactory;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Gravity;

@@ -51,7 +51,7 @@ public class PessoaRepository implements IPessoaRepository {
     @Override
     public Pessoa getById(int id) throws PessoaNotFoundException {
         Cursor c = dbh.getReadableDatabase()
-                .rawQuery("SELECT * FROM users AS u INNER JOIN user_adresses AS wa ON wa.user_id = u.id WHERE i.id = ?",
+                .rawQuery("SELECT * FROM users AS u INNER JOIN user_adresses AS wa ON wa.user_id = u.id WHERE u.id = ?",
                         new String[]{id + ""});
         if (!c.moveToNext()) {
             throw new PessoaNotFoundException();
@@ -116,7 +116,7 @@ public class PessoaRepository implements IPessoaRepository {
     @Override
     public void deleteById(int id) throws PessoaNotFoundException {
         Cursor c = dbh.getReadableDatabase()
-                .rawQuery("SELECT * FROM users AS u INNER JOIN user_adresses AS wa ON wa.user_id = u.id WHERE i.id = ?",
+                .rawQuery("SELECT * FROM users WHERE id = ?",
                         new String[]{id+""});
         if (!c.moveToNext()){
             throw new PessoaNotFoundException();

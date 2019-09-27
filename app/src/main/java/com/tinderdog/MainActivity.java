@@ -10,6 +10,8 @@ import com.tinderdog.models.usuario.Endereco;
 import com.tinderdog.models.usuario.Pessoa;
 import com.tinderdog.repository.api.sqlite.IDogRepository;
 import com.tinderdog.repository.api.sqlite.IPessoaRepository;
+import com.tinderdog.repository.exception.dog.DogNotHaveOwnerException;
+import com.tinderdog.repository.exception.dog.InsertDogException;
 import com.tinderdog.repository.factoy.DogRepositoryFactory;
 import com.tinderdog.repository.factoy.PessoaRepositoryFactory;
 import com.tinderdog.util.LoggerWrapper;
@@ -44,13 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
         Pessoa donoExemplo = new Pessoa(-1, null, "NomePessoa", "","",
                 new Endereco("","","","",""),null);
-
-        IDogRepository dR = DogRepositoryFactory.getInstance().getRepository();
-        IPessoaRepository pR = PessoaRepositoryFactory.getInstance().getRepository();
-        LoggerWrapper.log("opaaaaa");
-        pR.getAll().forEach((s)->{
-            LoggerWrapper.log(s.getNome());
-        });
 
         dogs = new ArrayList<>();
         dogs.add(new Dog(1, donoExemplo, "bob", "branco", 1, "medio"));

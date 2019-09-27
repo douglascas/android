@@ -1,6 +1,7 @@
 package com.tinderdog.repository.impl.sqlite;
 
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.tinderdog.models.Dog;
 import com.tinderdog.models.usuario.Pessoa;
@@ -139,7 +140,8 @@ public class DogRepository implements IDogRepository {
             throw new DogNotHaveOwnerException();
         }
         try {
-            dbh.getWritableDatabase().execSQL("UPDATE dogs SET owner_id = ?, name = ?, age = ?, gait = ?, color = ? WHERE id = ?",
+            SQLiteDatabase db = dbh.getWritableDatabase();
+            db.execSQL("UPDATE dogs SET owner_id = ?, name = ?, age = ?, gait = ?, color = ? WHERE id = ?",
                     new Object[]{
                             dog.getDono().getId(),
                             dog.getNome(),
@@ -148,6 +150,7 @@ public class DogRepository implements IDogRepository {
                             dog.getCor_pelagem(),
                             dog.getId()
                     });
+            db.close();
         } catch (Exception e){
             throw new UpdateDogException();
         }
@@ -158,7 +161,8 @@ public class DogRepository implements IDogRepository {
         if (dog.getDono() == null){
             throw new DogNotHaveOwnerException();
         }
-        dbh.getWritableDatabase().execSQL("INSERT INTO dogs (owner_id,name,age,gait,color) VALUES (?,?,?,?,?);",
+        SQLiteDatabase db = dbh.getWritableDatabase();
+        db.execSQL("INSERT INTO dogs (owner_id,name,age,gait,color) VALUES (?,?,?,?,?);",
                 new Object[]{
                         dog.getDono().getId(),
                         dog.getNome(),
@@ -166,6 +170,7 @@ public class DogRepository implements IDogRepository {
                         dog.getPorte(),
                         dog.getCor_pelagem()
                 });
+        db.close();
     }
 
     @Override
@@ -182,7 +187,9 @@ public class DogRepository implements IDogRepository {
             throw new DogNotFoundException();
         }
         int dogId = c.getInt(c.getColumnIndex("id"));
-        dbh.getWritableDatabase().execSQL("DELETE FROM dogs WHERE id = ?;", new Object[]{dogId});
+        SQLiteDatabase db = dbh.getWritableDatabase();
+        db.execSQL("DELETE FROM dogs WHERE id = ?;", new Object[]{dogId});
+        db.close();
         c.close();
     }
 

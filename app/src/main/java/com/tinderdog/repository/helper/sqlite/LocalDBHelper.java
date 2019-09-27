@@ -1,8 +1,13 @@
 package com.tinderdog.repository.helper.sqlite;
 
+import android.app.Application;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.tinderdog.MainActivity;
+import com.tinderdog.TinderDogApp;
+import com.tinderdog.util.LoggerWrapper;
 
 public class LocalDBHelper extends SQLiteOpenHelper {
 
@@ -18,16 +23,16 @@ public class LocalDBHelper extends SQLiteOpenHelper {
 
 
     private LocalDBHelper() {
-        super(null, "local.db", null, 1);
+        super(TinderDogApp.getContext(), "tinderdog.db", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "PRAGMA foreign_keys = off;"
-                +"CREATE TABLE dogs (id INTEGER PRIMARY KEY AUTOINCREMENT, owner_id INTEGER REFERENCES users (id) ON DELETE CASCADE ON UPDATE NO ACTION NOT NULL, name VARCHAR (180), age DOUBLE, gait VARCHAR (180), color VARCHAR (180));"
+        LoggerWrapper.log("DEBE CRIOOOOOOOOOOOOOOOOOOOOOO");
+        String sql =
+                "CREATE TABLE dogs (id INTEGER PRIMARY KEY AUTOINCREMENT, owner_id INTEGER REFERENCES users (id) ON DELETE CASCADE ON UPDATE NO ACTION NOT NULL, name VARCHAR (180), age DOUBLE, gait VARCHAR (180), color VARCHAR (180));"
                 +"CREATE TABLE user_adresses (user_id INTEGER REFERENCES users (id) ON DELETE CASCADE ON UPDATE NO ACTION UNIQUE NOT NULL PRIMARY KEY, cep VARCHAR (180), logradouro VARCHAR (180), bairro VARCHAR (180), cidade VARCHAR (180), estado VARCHAR (180));"
-                +"CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR (180) NOT NULL, email VARCHAR (180), password VARCHAR (128), cpf VARCHAR (11) UNIQUE, birth_date DATE);"
-                +"PRAGMA foreign_keys = on;";
+                +"CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR (180) NOT NULL, email VARCHAR (180), password VARCHAR (128), cpf VARCHAR (11) UNIQUE, birth_date DATE);";
         db.execSQL(sql);
     }
 

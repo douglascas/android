@@ -1,6 +1,7 @@
 package com.tinderdog.repository.impl.sqlite;
 
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.tinderdog.models.usuario.Endereco;
 import com.tinderdog.models.usuario.Login;
@@ -86,8 +87,10 @@ public class PessoaRepository implements IPessoaRepository {
 
     @Override
     public void insert(Pessoa pessoa) throws InsertPessoaException {
-        try{
-            dbh.getWritableDatabase().execSQL("INSERT INTO users (name,email,password,cpf,birth_date) VALUES (?,?,?,?,?);",
+        SQLiteDatabase db = dbh.getWritableDatabase();
+        try {
+
+            db.execSQL("INSERT INTO users (name,email,password,cpf,birth_date) VALUES (?,?,?,?,?);",
                     new Object[]{
                             pessoa.getNome(),
                             pessoa.getLogin().getEmail(),
@@ -95,7 +98,7 @@ public class PessoaRepository implements IPessoaRepository {
                             pessoa.getCpf(),
                             pessoa.getDt_nascimento(),
                     });
-            dbh.getWritableDatabase().execSQL("INSERT INTO user_adresses (user_id,cep,logradouro,bairro,cidade,estado) VALUES (last_insert_rowid(),?,?,?,?,?);",
+            db.execSQL("INSERT INTO user_adresses (user_id,cep,logradouro,bairro,cidade,estado) VALUES (last_insert_rowid(),?,?,?,?,?);",
                     new Object[]{
                             pessoa.getEndereco().getCep(),
                             pessoa.getEndereco().getLogradouro(),
@@ -103,6 +106,7 @@ public class PessoaRepository implements IPessoaRepository {
                             pessoa.getEndereco().getCidade(),
                             pessoa.getEndereco().getEstado()
                     });
+            db.close();
         }catch (Exception e){
            throw new InsertPessoaException();
         }
@@ -122,8 +126,10 @@ public class PessoaRepository implements IPessoaRepository {
             throw new PessoaNotFoundException();
         }
         int pessoaId = c.getInt(c.getColumnIndex("id"));
-        dbh.getWritableDatabase().execSQL("DELETE FROM users WHERE id = ?;", new Object[]{pessoaId});
+        SQLiteDatabase db = dbh.getWritableDatabase();
+        db.execSQL("DELETE FROM users WHERE id = ?;", new Object[]{pessoaId});
         c.close();
+        db.close();
     }
 
     private Pessoa createPessoaInstance(Cursor c){

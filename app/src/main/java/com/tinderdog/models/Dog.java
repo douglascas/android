@@ -22,6 +22,7 @@ public class Dog {
         this.cor_pelagem = cor_pelagem;
         this.idade = idade;
         this.porte = porte;
+        this.dono = dono;
     }
 
     public int getId() {

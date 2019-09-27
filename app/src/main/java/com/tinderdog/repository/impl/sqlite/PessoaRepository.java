@@ -63,6 +63,7 @@ public class PessoaRepository implements IPessoaRepository {
     @Override
     public void update(Pessoa pessoa) throws UpdatePessoaException {
         try {
+
             dbh.getWritableDatabase().execSQL("UPDATE users SET name = ?, email = ?, password = ?, cpf = ?, birth_date = ? WHERE id = ?",
                     new Object[]{
                             pessoa.getNome(),

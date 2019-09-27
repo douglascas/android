@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.tinderdog.models.usuario.Endereco;
 import com.tinderdog.models.usuario.Login;
 import com.tinderdog.models.usuario.Pessoa;
-import com.tinderdog.repository.api.sqlite.IPessoaRepository;
+import com.tinderdog.repository.api.IPessoaRepository;
 import com.tinderdog.repository.exception.pessoa.InsertPessoaException;
 import com.tinderdog.repository.exception.pessoa.PessoaNotFoundException;
 import com.tinderdog.repository.exception.pessoa.UpdatePessoaException;

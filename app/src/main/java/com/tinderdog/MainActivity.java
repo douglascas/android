@@ -1,6 +1,5 @@
 package com.tinderdog;
 
-import android.content.Context;
 import android.os.Bundle;
 
 
@@ -8,13 +7,6 @@ import com.tinderdog.adapters.DogAdapter;
 import com.tinderdog.models.Dog;
 import com.tinderdog.models.usuario.Endereco;
 import com.tinderdog.models.usuario.Pessoa;
-import com.tinderdog.repository.api.sqlite.IDogRepository;
-import com.tinderdog.repository.api.sqlite.IPessoaRepository;
-import com.tinderdog.repository.exception.dog.DogNotHaveOwnerException;
-import com.tinderdog.repository.exception.dog.InsertDogException;
-import com.tinderdog.repository.factoy.DogRepositoryFactory;
-import com.tinderdog.repository.factoy.PessoaRepositoryFactory;
-import com.tinderdog.util.LoggerWrapper;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Gravity;
@@ -52,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         dogs.add(new Dog(2, donoExemplo, "mel", "preto", 2, "pequeno"));
         dogs.add(new Dog(3, donoExemplo, "caramelo", "amarelo", 1, "grande"));
         dogs.add(new Dog(4, donoExemplo, "thor", "branco", 4, "medio"));
+
 
         adapter = new DogAdapter(this, dogs);
 

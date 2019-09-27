@@ -1,6 +1,6 @@
 package com.tinderdog.repository.factoy;
 
-import com.tinderdog.repository.api.sqlite.IDogRepository;
+import com.tinderdog.repository.api.IDogRepository;
 import com.tinderdog.repository.impl.sqlite.DogRepository;
 
 public class DogRepositoryFactory {

@@ -1,4 +1,4 @@
-package com.tinderdog.repository.api.sqlite;
+package com.tinderdog.repository.api;
 
 import com.tinderdog.models.Dog;
 import com.tinderdog.repository.exception.dog.DogNotFoundException;

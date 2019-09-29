@@ -124,6 +124,19 @@ public class DogRepository implements IDogRepository {
     }
 
     @Override
+    public List<Dog> searchForOwner(Int ownerId) {
+        Cursor c = dbh.getReadableDatabase()
+                .rawQuery("SELECT * FROM dogs WHERE owner_id = ?",
+                        new String[]{"%"+ownerId+"%"});
+        List<Dog> dogs = new ArrayList<>();
+        while (c.moveToNext()){
+            dogs.add(createDogInstance(c));
+        }
+        c.close();
+        return dogs;
+    }
+
+    @Override
     public Dog getById(int id) throws DogNotFoundException {
         Cursor c = dbh.getReadableDatabase()
                 .rawQuery("SELECT * FROM dog WHERE id = ?",

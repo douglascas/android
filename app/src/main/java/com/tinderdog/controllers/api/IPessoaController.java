@@ -8,12 +8,13 @@ import com.tinderdog.repository.exception.pessoa.UpdatePessoaException;
 import java.util.List;
 
 public interface IPessoaController {
-    void get(Pessoa pessoa) throws PessoaNotFoundException;
-    void getAll();
-    void getAll(int init, int end);
-    void getById(int id) throws PessoaNotFoundException;
-    void update(Pessoa pessoa) throws UpdatePessoaException;
-    void insert(Pessoa pessoa) throws InsertPessoaException;
-    void delete(Pessoa pessoa) throws PessoaNotFoundException;
-    void deleteById(int pessoa) throws PessoaNotFoundException;
+    Pessoa getPessoa(Pessoa pessoa) throws PessoaNotFoundException;
+    List<Pessoa> getAllPessoas();
+    List<Pessoa> getAllPessoas(int init, int end);
+    Pessoa getPessoaById(int id) throws PessoaNotFoundException;
+    Pessoa getPessoaByEmail(String email) throws PessoaNotFoundException;
+    void updatePessoa(Pessoa pessoa) throws UpdatePessoaException;
+    void insertPessoa(Pessoa pessoa) throws InsertPessoaException;
+    void deletePessoa(Pessoa pessoa) throws PessoaNotFoundException;
+    void deletePessoaById(int pessoa) throws PessoaNotFoundException;
 }

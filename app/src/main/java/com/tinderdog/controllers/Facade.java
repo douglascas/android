@@ -1,6 +1,7 @@
 package com.tinderdog.controllers;
 
 import com.tinderdog.controllers.api.IDogController;
+import com.tinderdog.controllers.api.ILoginController;
 import com.tinderdog.controllers.api.IPessoaController;
 import com.tinderdog.models.Dog;
 import com.tinderdog.models.usuario.Pessoa;
@@ -12,11 +13,13 @@ import com.tinderdog.repository.exception.pessoa.InsertPessoaException;
 import com.tinderdog.repository.exception.pessoa.PessoaNotFoundException;
 import com.tinderdog.repository.exception.pessoa.UpdatePessoaException;
 
-import java.util.FormatterClosedException;
+import java.util.List;
 
-public class Facade implements IPessoaController, IDogController {
+public class Facade implements IPessoaController, IDogController, ILoginController {
 
-    private IPessoaController pessoaControlador;
+    private IPessoaController pessoaController;
+    private ILoginController loginController;
+    private IDogController dogController;
     private static Facade instancia;
 
     public static Facade getInstance(){
@@ -27,70 +30,114 @@ public class Facade implements IPessoaController, IDogController {
     }
 
     private Facade (){
-        pessoaControlador = PessoaController.getInstance();
-    }
-    @Override
-    public void get(Pessoa pessoa) throws PessoaNotFoundException {
-
+        pessoaController = PessoaController.getInstance();
+        loginController = LoginController.getInstance();
+        dogController = DogController.getInstance();
     }
 
+
+//    Login controller
     @Override
-    public void get(Dog dog) throws DogNotFoundException {
-
-    }
-
-    @Override
-    public void getAll() {
-
+    public Pessoa login(String email, String password) {
+        return this.loginController.login(email,password);
     }
 
     @Override
-    public void getAll(int init, int end) {
+    public void logout() {
+        this.loginController.logout();
+    }
 
+
+//    Dog Controller
+    @Override
+    public Dog getDog(Dog dog) throws DogNotFoundException {
+        return dogController.getDog(dog);
     }
 
     @Override
-    public void getById(int id) throws PessoaNotFoundException {
-
+    public List<Dog> getAllDogs() {
+        return dogController.getAllDogs();
     }
 
     @Override
-    public void getByDono(Pessoa dono) {
-
+    public List<Dog> getAllDogs(int init, int end) {
+        return dogController.getAllDogs(init, end);
     }
 
     @Override
-    public void update(Dog dog) throws UpdateDogException, DogNotHaveOwnerException {
-
+    public Dog getDogById(int id) throws DogNotFoundException, PessoaNotFoundException {
+        return dogController.getDogById(id);
     }
 
     @Override
-    public void insert(Dog dog) throws InsertDogException, DogNotHaveOwnerException {
-
+    public Dog getDogByDono(Pessoa dono) {
+        return dogController.getDogByDono(dono);
     }
 
     @Override
-    public void delete(Dog dog) throws DogNotFoundException {
-
+    public void updateDog(Dog dog) throws UpdateDogException, DogNotHaveOwnerException {
+        dogController.updateDog(dog);
     }
 
     @Override
-    public void update(Pessoa pessoa) throws UpdatePessoaException {
-
+    public void insertDog(Dog dog) throws InsertDogException, DogNotHaveOwnerException {
+        dogController.insertDog(dog);
     }
 
     @Override
-    public void insert(Pessoa pessoa) throws InsertPessoaException {
-
+    public void deleteDog(Dog dog) throws DogNotFoundException {
+        dogController.deleteDog(dog);
     }
 
     @Override
-    public void delete(Pessoa pessoa) throws PessoaNotFoundException {
+    public void deleteDogById(int dog) throws DogNotFoundException, PessoaNotFoundException {
+        dogController.deleteDogById(dog);
+    }
 
+
+//    Pessoa Controller
+    @Override
+    public Pessoa getPessoa(Pessoa pessoa) throws PessoaNotFoundException {
+        return pessoaController.getPessoa(pessoa);
     }
 
     @Override
-    public void deleteById(int pessoa) throws PessoaNotFoundException {
+    public List<Pessoa> getAllPessoas() {
+        return pessoaController.getAllPessoas();
+    }
 
+    @Override
+    public List<Pessoa> getAllPessoas(int init, int end) {
+        return pessoaController.getAllPessoas(init,end);
+    }
+
+    @Override
+    public Pessoa getPessoaById(int id) throws PessoaNotFoundException {
+        return pessoaController.getPessoaById(id);
+    }
+
+    @Override
+    public Pessoa getPessoaByEmail(String email) throws PessoaNotFoundException {
+        return pessoaController.getPessoaByEmail(email);
+    }
+
+    @Override
+    public void updatePessoa(Pessoa pessoa) throws UpdatePessoaException {
+        pessoaController.updatePessoa(pessoa);
+    }
+
+    @Override
+    public void insertPessoa(Pessoa pessoa) throws InsertPessoaException {
+        pessoaController.insertPessoa(pessoa);
+    }
+
+    @Override
+    public void deletePessoa(Pessoa pessoa) throws PessoaNotFoundException {
+        pessoaController.deletePessoa(pessoa);
+    }
+
+    @Override
+    public void deletePessoaById(int pessoa) throws PessoaNotFoundException {
+        pessoaController.deletePessoaById(pessoa);
     }
 }

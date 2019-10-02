@@ -61,6 +61,17 @@ public class PessoaRepository implements IPessoaRepository {
     }
 
     @Override
+    public Pessoa getByEmail(String email) throws PessoaNotFoundException {
+        Cursor c = dbh.getReadableDatabase()
+                .rawQuery("SELECT * FROM users AS u INNER JOIN user_adresses AS wa ON wa.user_id = u.id WHERE u.email LIKE ?",
+                        new String[]{""+email});
+        if (!c.moveToNext()) {
+            throw new PessoaNotFoundException();
+        }
+        return createPessoaInstance(c);
+    }
+
+    @Override
     public void update(Pessoa pessoa) throws UpdatePessoaException {
         try {
 

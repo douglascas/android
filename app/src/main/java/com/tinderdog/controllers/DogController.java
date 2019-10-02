@@ -10,6 +10,8 @@ import com.tinderdog.repository.exception.dog.UpdateDogException;
 import com.tinderdog.models.usuario.Pessoa;
 import com.tinderdog.repository.factoy.DogRepositoryFactory;
 
+import java.util.List;
+
 
 public class DogController implements IDogController {
     private static DogController instance;
@@ -27,35 +29,35 @@ public class DogController implements IDogController {
     }
 
     @Override
-    public void get(Dog dog) throws DogNotFoundException {
-        repositorio.get(dog);
+    public Dog getDog(Dog dog) throws DogNotFoundException {
+        return repositorio.get(dog);
     }
 
     @Override
-    public void getAll() {
-        repositorio.getAll();
+    public List<Dog> getAllDogs() {
+        return repositorio.getAll();
     }
 
     @Override
-    public void getAll(int init, int end) {
-        repositorio.getAll(init,end);
+    public List<Dog> getAllDogs(int init, int end) {
+        return repositorio.getAll(init,end);
     }
 
     @Override
-    public void getById(int id) throws DogNotFoundException {
+    public Dog getDogById(int id) throws DogNotFoundException {
         if(id <= 0){
             throw new DogNotFoundException();
         }
-        repositorio.getById(id);
+        return repositorio.getById(id);
     }
 
     @Override
-    public void getByDono(Pessoa dono) {
-        repositorio.getBy(dono);
+    public Dog getDogByDono(Pessoa dono) {
+        return repositorio.getBy(dono);
     }
 
     @Override
-    public void update(Dog dog) throws UpdateDogException, DogNotHaveOwnerException {
+    public void updateDog(Dog dog) throws UpdateDogException, DogNotHaveOwnerException {
         if(dog == null){
             throw new UpdateDogException();
         }
@@ -63,7 +65,7 @@ public class DogController implements IDogController {
     }
 
     @Override
-    public void insert(Dog dog) throws InsertDogException,DogNotHaveOwnerException {
+    public void insertDog(Dog dog) throws InsertDogException,DogNotHaveOwnerException {
         if(dog == null){
             throw new InsertDogException();
         }
@@ -71,7 +73,7 @@ public class DogController implements IDogController {
     }
 
     @Override
-    public void delete(Dog dog) throws DogNotFoundException {
+    public void deleteDog(Dog dog) throws DogNotFoundException {
         if(dog == null){
             throw new DogNotFoundException();
         }
@@ -79,7 +81,7 @@ public class DogController implements IDogController {
     }
 
     @Override
-    public void deleteById(int dog) throws DogNotFoundException {
+    public void deleteDogById(int dog) throws DogNotFoundException {
         repositorio.deleteById(dog);
     }
 }

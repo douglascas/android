@@ -1,16 +1,23 @@
 package com.tinderdog.controllers;
 
 import com.tinderdog.controllers.api.IPessoaController;
+import com.tinderdog.repository.api.ILoginReposiitory;
 import com.tinderdog.repository.api.IPessoaRepository;
 import com.tinderdog.models.usuario.Pessoa;
 import com.tinderdog.repository.exception.pessoa.InsertPessoaException;
 import com.tinderdog.repository.exception.pessoa.PessoaNotFoundException;
 import com.tinderdog.repository.exception.pessoa.UpdatePessoaException;
+import com.tinderdog.repository.factoy.LoginRepositoryFactory;
 import com.tinderdog.repository.factoy.PessoaRepositoryFactory;
+import com.tinderdog.repository.impl.runtime.LoginRepository;
+
+import java.util.List;
 
 public class PessoaController implements IPessoaController {
+
     private static PessoaController instance;
-    private IPessoaRepository repositorio;
+    private IPessoaRepository pessoaRepositorio;
+    private ILoginReposiitory loginReposiitory;
 
     public static PessoaController getInstance() {
         if (instance == null) {
@@ -20,58 +27,65 @@ public class PessoaController implements IPessoaController {
     }
 
     private PessoaController(){
-        repositorio = PessoaRepositoryFactory.getInstance().getRepository();
+        pessoaRepositorio = PessoaRepositoryFactory.getInstance().getRepository();
+        loginReposiitory = LoginRepositoryFactory.getInstance().getRepository();
     }
 
     @Override
-    public void get(Pessoa pessoa) throws PessoaNotFoundException {
-        repositorio.get(pessoa);
+    public Pessoa getPessoa(Pessoa pessoa) throws PessoaNotFoundException {
+        return pessoaRepositorio.get(pessoa);
     }
 
     @Override
-    public void getAll() {
-        repositorio.getAll();
+    public List<Pessoa> getAllPessoas() {
+        return pessoaRepositorio.getAll();
     }
 
     @Override
-    public void getAll(int init, int end) {
-        repositorio.getAll(init,end);
+    public List<Pessoa> getAllPessoas(int init, int end) {
+        return pessoaRepositorio.getAll(init,end);
     }
 
     @Override
-    public void getById(int id) throws PessoaNotFoundException {
+    public Pessoa getPessoaById(int id) throws PessoaNotFoundException {
         if(id <= 0){
             throw new PessoaNotFoundException();
         }
-        repositorio.getById(id);
+        return pessoaRepositorio.getById(id);
     }
 
     @Override
-    public void update(Pessoa pessoa) throws UpdatePessoaException{
+    public Pessoa getPessoaByEmail(String email) throws PessoaNotFoundException {
+        return pessoaRepositorio.getByEmail(email);
+    }
+
+    @Override
+    public void updatePessoa(Pessoa pessoa) throws UpdatePessoaException{
         if(pessoa == null){
             throw new UpdatePessoaException();
         }
-        repositorio.update(pessoa);
+        pessoaRepositorio.update(pessoa);
     }
 
     @Override
-    public void insert(Pessoa pessoa) throws InsertPessoaException {
+    public void insertPessoa(Pessoa pessoa) throws InsertPessoaException {
         if(pessoa == null){
             throw new InsertPessoaException();
         }
-        repositorio.insert(pessoa);
+        pessoaRepositorio.insert(pessoa);
     }
 
     @Override
-    public void delete(Pessoa pessoa) throws PessoaNotFoundException {
+    public void deletePessoa(Pessoa pessoa) throws PessoaNotFoundException {
         if(pessoa == null){
             throw new PessoaNotFoundException();
         }
-        repositorio.delete(pessoa);
+        pessoaRepositorio.delete(pessoa);
     }
 
     @Override
-    public void deleteById(int pessoa) throws PessoaNotFoundException {
-        repositorio.deleteById(pessoa);
+    public void deletePessoaById(int pessoa) throws PessoaNotFoundException {
+        pessoaRepositorio.deleteById(pessoa);
     }
+
 }

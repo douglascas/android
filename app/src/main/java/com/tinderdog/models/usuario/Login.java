@@ -5,6 +5,7 @@ public class Login {
     private int id;
     private String email;
     private String senha;
+    private boolean isLogged;
 
     public Login(){
 
@@ -40,4 +41,11 @@ public class Login {
         this.senha = senha;
     }
 
+    public boolean isLogged() {
+        return isLogged;
+    }
+
+    public void setLogged(boolean logged) {
+        isLogged = logged;
+    }
 }

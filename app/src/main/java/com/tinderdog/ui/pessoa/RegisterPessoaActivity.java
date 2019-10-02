@@ -79,7 +79,7 @@ public class RegisterPessoaActivity extends AppCompatActivity {
            Pessoa pessoa = new Pessoa(1,login,nome,cpf,dtNascimento,endereco,null);
 
             try {
-                facade.insert(pessoa);
+                facade.insertPessoa(pessoa);
             } catch ( InsertPessoaException e) {
                 System.out.println(e.getMessage());
             }
@@ -99,7 +99,7 @@ public class RegisterPessoaActivity extends AppCompatActivity {
                     "10/04/1995",endereco,null);
 
             try {
-                facade.insert(pessoa);
+                facade.insertPessoa(pessoa);
             } catch ( InsertPessoaException e) {
                 System.out.println(e.getMessage());
             }

@@ -73,30 +73,13 @@ public class ListarDogs extends AppCompatActivity {
 
         listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view,
-                                    int position, long id) {
-                Dog dog = (Dog) adapterView.getItemAtPosition(position);
-
-
-                if (dog != null) {
-                    //Toast.makeText(ListarDogs.this, dog.id + "-" + dog.nome,
-                    //Toast.LENGTH_SHORT).show(); //notificacao toast
-                    switch(position){
-                        case 1:
-                            Intent intent = new Intent(ListarDogs.this, DetailActivity.class);
-                            startActivity(intent);
-                    }
-
-                    //aqui n deleta
-                    //dogs.remove(dog);
-                    //adapter.notifyDataSetChanged();
-
-                    /*txtFooter.setText(getResources().getQuantityString(
-                            R.plurals.texto_rodape,
-                            adapter.getCount(),
-                            adapter.getCount()));*/
+        listView.setOnItemClickListener((adapterView, view, position, id) -> {
+            Dog dog = (Dog) adapterView.getItemAtPosition(position);
+            if (dog != null) {
+                switch(position){
+                    case 1:
+                        Intent intent = new Intent(ListarDogs.this, DetailActivity.class);
+                        startActivity(intent);
                 }
             }
         });

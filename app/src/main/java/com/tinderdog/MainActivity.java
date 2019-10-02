@@ -53,84 +53,73 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mBtnCadastrar = (Button) findViewById(R.id.btnCadastrar);
-        mbtnLogin = (Button) findViewById(R.id.btnLogin);
+        mBtnCadastrar = findViewById(R.id.btnCadastrar);
+        mbtnLogin =  findViewById(R.id.btnLogin);
 
-        etEmail = (EditText)findViewById(R.id.etEmail);
-        etSenha = (EditText)findViewById(R.id.etSenha);
-        etNome = (EditText)findViewById(R.id.etNome);
-        etDtNascimento = (EditText)findViewById(R.id.etData);
-        etCPF = (EditText)findViewById(R.id.etCPF);
-        etCEP = (EditText)findViewById(R.id.etCEP);
-        etLogradouro = (EditText)findViewById(R.id.etLogradouro);
-        etBairro = (EditText)findViewById(R.id.etBairro);
-        etCidade = (EditText)findViewById(R.id.etCidade);
-        etEstado = (EditText)findViewById(R.id.etEstado);
+        etEmail = findViewById(R.id.etEmail);
+        etSenha = findViewById(R.id.etSenha);
+        etNome = findViewById(R.id.etNome);
+        etDtNascimento = findViewById(R.id.etData);
+        etCPF = findViewById(R.id.etCPF);
+        etCEP = findViewById(R.id.etCEP);
+        etLogradouro = findViewById(R.id.etLogradouro);
+        etBairro = findViewById(R.id.etBairro);
+        etCidade = findViewById(R.id.etCidade);
+        etEstado = findViewById(R.id.etEstado);
 
 
-        mbtnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Intent intent = new Intent(MainActivity.this,LoginAcitivity.class);
-                //startActivity(intent);
-            }
+        mbtnLogin.setOnClickListener(v -> {
+            //Intent intent = new Intent(MainActivity.this,LoginAcitivity.class);
+            //startActivity(intent);
         });
 
-        mBtnCadastrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mBtnCadastrar.setOnClickListener(v -> {
 
-                String email = etEmail.getText().toString();
-                String senha = etSenha.getText().toString();
-                String nome  = etNome.getText().toString();
-                String cpf   = etCPF.getText().toString();
-                String dtNascimento = etDtNascimento.getText().toString();
-                String cep = etCEP.getText().toString();
-                String logradouro = etLogradouro.getText().toString();
-                String bairro = etBairro.getText().toString();
-                String cidade = etCidade.getText().toString();
-                String estado = etEstado.getText().toString();
+            String email = etEmail.getText().toString();
+            String senha = etSenha.getText().toString();
+            String nome  = etNome.getText().toString();
+            String cpf   = etCPF.getText().toString();
+            String dtNascimento = etDtNascimento.getText().toString();
+            String cep = etCEP.getText().toString();
+            String logradouro = etLogradouro.getText().toString();
+            String bairro = etBairro.getText().toString();
+            String cidade = etCidade.getText().toString();
+            String estado = etEstado.getText().toString();
 
-               Endereco endereco = new Endereco(cep,logradouro,bairro,cidade,estado);
-               Login login = new Login(001,email,senha);
+           Endereco endereco = new Endereco(cep,logradouro,bairro,cidade,estado);
+           Login login = new Login(1,email,senha);
 
-               Pessoa pessoa = new Pessoa(001,login,nome,cpf,dtNascimento,endereco,null);
+           Pessoa pessoa = new Pessoa(1,login,nome,cpf,dtNascimento,endereco,null);
 
-                try {
-                    facade.insert(pessoa);
-                } catch ( InsertPessoaException e) {
-                    System.out.println(e.getMessage());
-                }
-
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-
+            try {
+                facade.insert(pessoa);
+            } catch ( InsertPessoaException e) {
+                System.out.println(e.getMessage());
             }
 
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
 
         });
 
-        mbtnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mbtnLogin.setOnClickListener(v -> {
 
-                Endereco endereco = new Endereco("51202102","Av Conselheiro Aguiar",
-                        "boa viagem","recife","pe");
-                Login login = new Login(002,"marina","123456");
+            Endereco endereco = new Endereco("51202102","Av Conselheiro Aguiar",
+                    "boa viagem","recife","pe");
+            Login login = new Login(2,"marina","123456");
 
-                Pessoa pessoa = new Pessoa(001,login,"Marina","023454545",
-                        "10/04/1995",endereco,null);
+            Pessoa pessoa = new Pessoa(1,login,"Marina","023454545",
+                    "10/04/1995",endereco,null);
 
-                try {
-                    facade.insert(pessoa);
-                } catch ( InsertPessoaException e) {
-                    System.out.println(e.getMessage());
-                }
-
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-
+            try {
+                facade.insert(pessoa);
+            } catch ( InsertPessoaException e) {
+                System.out.println(e.getMessage());
             }
+
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+
         });
 
 

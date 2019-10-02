@@ -10,6 +10,7 @@ import com.tinderdog.models.Dog;
 import com.tinderdog.models.usuario.Endereco;
 import com.tinderdog.models.usuario.Pessoa;
 import com.tinderdog.models.usuario.Login;
+import com.tinderdog.controllers.Facade;
 import com.tinderdog.repository.api.IDogRepository;
 import com.tinderdog.repository.api.IPessoaRepository;
 import com.tinderdog.repository.exception.pessoa.InsertPessoaException;
@@ -43,9 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText etBairro;
     private EditText etCidade;
     private EditText etEstado;
-    private Pessoa pessoa;
-    private Endereco endereco;
-    private Login login;
+    private Facade facade = Facade.getInstance();
 
 
     @Override
@@ -91,17 +90,43 @@ public class MainActivity extends AppCompatActivity {
                 String cidade = etCidade.getText().toString();
                 String estado = etEstado.getText().toString();
 
-                //endereco = new Endereco(cep,logradouro,bairro,cidade,estado);
-                //login = new Login(001,email,senha);
+               Endereco endereco = new Endereco(cep,logradouro,bairro,cidade,estado);
+               Login login = new Login(001,email,senha);
 
-                //pessoa = new Pessoa(001,login,nome,cpf,dtNascimento,endereco,null);
+               Pessoa pessoa = new Pessoa(001,login,nome,cpf,dtNascimento,endereco,null);
 
-                //IPessoaRepository pessoaRepository = PessoaRepositoryFactory.getInstance().getRepository();
-
-
+                try {
+                    facade.insert(pessoa);
+                } catch ( InsertPessoaException e) {
+                    System.out.println(e.getMessage());
+                }
 
                 Intent intent = new Intent(MainActivity.this, CadastroPessoaActivity.class);
                 startActivity(intent);
+
+            }
+
+
+        });
+
+        mbtnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Endereco endereco = new Endereco("51202102","Av Conselheiro Aguiar",
+                        "boa viagem","recife","pe");
+                Login login = new Login(002,"marina","123456");
+
+                Pessoa pessoa = new Pessoa(001,login,"Marina","023454545",
+                        "10/04/1995",endereco,null);
+
+                try {
+                    facade.insert(pessoa);
+                } catch ( InsertPessoaException e) {
+                    System.out.println(e.getMessage());
+                }
+
+                //Activity de login
 
             }
         });

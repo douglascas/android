@@ -6,6 +6,6 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.ActionChoiceActivity"
-    tools:showIn="@layout/activity_cadastro_pessoa">
+    tools:showIn="@layout/activity_choice">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="11dp"
         android:layout_marginBottom="6dp"
-        android:text="Bairro:"
+        android:text="@string/bairro"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/etCidade"
         app:layout_constraintEnd_toStartOf="@+id/etCidade" />
@@ -27,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="15dp"
-        android:text="Endereço:"
+        android:text="@string/endereco"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/etLogradouro"
         app:layout_constraintTop_toBottomOf="@+id/etCEP" />
@@ -48,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
         android:layout_marginEnd="2dp"
-        android:text="Estado:"
+        android:text="@string/estado"
         android:textAlignment="textStart"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/etCidade"
@@ -60,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="3dp"
-        android:text="Cidade"
+        android:text="@string/cidade"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/etCidade"
         app:layout_constraintEnd_toStartOf="@+id/etCidade" />
@@ -90,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="28dp"
-        android:text="email:"
+        android:text="@string/email"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/etEmail"
         app:layout_constraintTop_toTopOf="@+id/etEmail" />
@@ -101,7 +100,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
-        android:text="senha:"
+        android:text="@string/senha"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/etSenha"
         app:layout_constraintTop_toTopOf="@+id/etSenha" />
@@ -112,7 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="4dp"
-        android:text="Nome:"
+        android:text="@string/nome"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/etNome"
         app:layout_constraintEnd_toStartOf="@+id/etNome" />
@@ -123,7 +122,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="28dp"
-        android:text="Data Nacimento:"
+        android:text="@string/data_nacimento"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/etData"
         app:layout_constraintTop_toTopOf="@+id/etData" />
@@ -146,7 +145,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="4dp"
-        android:text="CEP"
+        android:text="@string/cep"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/textView11"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
@@ -191,7 +190,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="4dp"
-        android:text="CPF:"
+        android:text="@string/cpf"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/etCPF"
         app:layout_constraintEnd_toStartOf="@+id/etCPF" />
@@ -233,7 +232,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
-        android:text="Cadastrar"
+        android:text="@string/cadastrar"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnLogin"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -242,7 +241,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
-        android:text="Já sou cadastrado"
+        android:text="@string/j_sou_cadastrado"
         app:layout_constraintEnd_toEndOf="@+id/textView20"
         app:layout_constraintStart_toEndOf="@+id/textView20"
         app:layout_constraintTop_toBottomOf="@+id/etEstado" />

@@ -20,4 +20,20 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="quero_adotar">Quero Adotar</string>
+    <string name="quero_cadastrar">QUERO CADASTRAR</string>
+    <string name="bairro">Bairro:</string>
+    <string name="endereco">Endereço:</string>
+    <string name="estado">Estado:</string>
+    <string name="cidade">Cidade</string>
+    <string name="email">email:</string>
+    <string name="senha">senha:</string>
+    <string name="nome">Nome:</string>
+    <string name="data_nacimento">Data Nacimento:</string>
+    <string name="cep">CEP</string>
+    <string name="cpf">CPF:</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="j_sou_cadastrado">Já sou cadastrado</string>
+    <string name="detail_gait">Sou porte medio</string>
+    <string name="detail_btn_eu_quero">Eu quero</string>
 </resources>

@@ -15,6 +15,7 @@ import com.tinderdog.repository.api.IDogRepository;
 import com.tinderdog.repository.api.IPessoaRepository;
 import com.tinderdog.repository.exception.pessoa.InsertPessoaException;
 import com.tinderdog.repository.factoy.PessoaRepositoryFactory;
+import com.tinderdog.ui.login.LoginActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Gravity;
@@ -101,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                     System.out.println(e.getMessage());
                 }
 
-                Intent intent = new Intent(MainActivity.this, CadastroPessoaActivity.class);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
 
             }
@@ -126,7 +127,8 @@ public class MainActivity extends AppCompatActivity {
                     System.out.println(e.getMessage());
                 }
 
-                //Activity de login
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
 
             }
         });

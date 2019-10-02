@@ -2,10 +2,13 @@ package com.tinderdog.controllers;
 
 import com.tinderdog.controllers.api.IDogController;
 import com.tinderdog.repository.api.IDogRepository;
-import com.tinderdog.models.usuario.Dog;
+import com.tinderdog.models.Dog;
+import com.tinderdog.repository.exception.dog.DogNotHaveOwnerException;
 import com.tinderdog.repository.exception.dog.InsertDogException;
 import com.tinderdog.repository.exception.dog.DogNotFoundException;
 import com.tinderdog.repository.exception.dog.UpdateDogException;
+import com.tinderdog.models.usuario.Pessoa;
+
 
 public class DogController implements IDogController {
     private static DogController instance;
@@ -47,7 +50,7 @@ public class DogController implements IDogController {
     }
 
     @Override
-    public void update(Dog dog) throws UpdateDogException{
+    public void update(Dog dog) throws UpdateDogException, DogNotHaveOwnerException {
         if(dog == null){
             throw new UpdateDogException();
         }
@@ -55,7 +58,7 @@ public class DogController implements IDogController {
     }
 
     @Override
-    public void insert(Dog dog) throws InsertDogException {
+    public void insert(Dog dog) throws InsertDogException,DogNotHaveOwnerException {
         if(dog == null){
             throw new InsertDogException();
         }

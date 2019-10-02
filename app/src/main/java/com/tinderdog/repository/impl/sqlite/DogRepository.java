@@ -124,7 +124,7 @@ public class DogRepository implements IDogRepository {
     }
 
     @Override
-    public List<Dog> searchForOwner(Int ownerId) {
+    public List<Dog> searchForOwner(int ownerId) {
         Cursor c = dbh.getReadableDatabase()
                 .rawQuery("SELECT * FROM dogs WHERE owner_id = ?",
                         new String[]{"%"+ownerId+"%"});
@@ -134,6 +134,11 @@ public class DogRepository implements IDogRepository {
         }
         c.close();
         return dogs;
+    }
+
+    @Override
+    public Dog getBy(Pessoa dono) {
+        return null;
     }
 
     @Override

@@ -43,6 +43,15 @@ public class LoginController implements ILoginController {
     }
 
     @Override
+    public boolean isLogged(){
+        return loginReposiitory.isLogged();
+    }
+    @Override
+    public Pessoa getCurrentUser(){
+        return loginReposiitory.getCurrentUser();
+    }
+
+    @Override
     public void logout() {
         loginReposiitory.setLoggedUser(null);
     }

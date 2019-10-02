@@ -20,7 +20,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
 
 
     private LocalDBHelper() {
-        super(TinderDogApp.getContext(), "tindedog", null, 2);
+        super(TinderDogApp.getContext(), "tindedog", null, 10);
     }
 
     @Override

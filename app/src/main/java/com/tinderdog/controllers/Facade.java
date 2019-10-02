@@ -43,6 +43,16 @@ public class Facade implements IPessoaController, IDogController, ILoginControll
     }
 
     @Override
+    public boolean isLogged() {
+        return this.loginController.isLogged();
+    }
+
+    @Override
+    public Pessoa getCurrentUser() {
+        return this.loginController.getCurrentUser();
+    }
+
+    @Override
     public void logout() {
         this.loginController.logout();
     }

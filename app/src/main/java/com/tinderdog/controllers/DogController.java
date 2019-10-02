@@ -8,6 +8,7 @@ import com.tinderdog.repository.exception.dog.InsertDogException;
 import com.tinderdog.repository.exception.dog.DogNotFoundException;
 import com.tinderdog.repository.exception.dog.UpdateDogException;
 import com.tinderdog.models.usuario.Pessoa;
+import com.tinderdog.repository.factoy.DogRepositoryFactory;
 
 
 public class DogController implements IDogController {
@@ -19,6 +20,10 @@ public class DogController implements IDogController {
             instance = new DogController();
         }
         return instance;
+    }
+
+    private DogController(){
+        repositorio = DogRepositoryFactory.getInstance().getRepository();
     }
 
     @Override

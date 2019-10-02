@@ -6,6 +6,7 @@ import com.tinderdog.models.usuario.Pessoa;
 import com.tinderdog.repository.exception.pessoa.InsertPessoaException;
 import com.tinderdog.repository.exception.pessoa.PessoaNotFoundException;
 import com.tinderdog.repository.exception.pessoa.UpdatePessoaException;
+import com.tinderdog.repository.factoy.PessoaRepositoryFactory;
 
 public class PessoaController implements IPessoaController {
     private static PessoaController instance;
@@ -16,6 +17,10 @@ public class PessoaController implements IPessoaController {
             instance = new PessoaController();
         }
         return instance;
+    }
+
+    private PessoaController(){
+        repositorio = PessoaRepositoryFactory.getInstance().getRepository();
     }
 
     @Override

@@ -14,6 +14,9 @@ public class DogRepositoryFactory {
         return instance;
     }
 
+    private DogRepositoryFactory() {
+    }
+
     public IDogRepository getRepository(){
         return new DogRepository();
     }

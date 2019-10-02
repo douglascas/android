@@ -14,6 +14,9 @@ public class PessoaRepositoryFactory {
         return instance;
     }
 
+    private PessoaRepositoryFactory() {
+    }
+
     public IPessoaRepository getRepository(){
         return new PessoaRepository();
     }

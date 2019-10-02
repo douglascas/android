@@ -27,7 +27,7 @@ public class Facade implements IPessoaController, IDogController {
     }
 
     private Facade (){
-        pessoaControlador = new PessoaController();
+        pessoaControlador = PessoaController.getInstance();
     }
     @Override
     public void get(Pessoa pessoa) throws PessoaNotFoundException {

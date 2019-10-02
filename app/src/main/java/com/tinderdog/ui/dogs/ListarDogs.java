@@ -1,7 +1,8 @@
-package com.tinderdog;
+package com.tinderdog.ui.dogs;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.tinderdog.R;
 import com.tinderdog.adapters.DogAdapter;
 import com.tinderdog.models.Dog;
 import com.tinderdog.models.usuario.Endereco;
@@ -10,32 +11,26 @@ import com.tinderdog.models.usuario.Pessoa;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.view.Gravity;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
-import java.util.List;
 
 import java.util.List;
 
 public class ListarDogs extends AppCompatActivity {
 
-    List<Dog> dogs;
-    DogAdapter adapter;
-    ListView listView;
+    private List<Dog> dogs;
+    private DogAdapter adapter;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_dogs);
 
-        listView = (ListView)findViewById(R.id.list);
+        listView = findViewById(R.id.list);
         listView.setEmptyView(findViewById(android.R.id.empty));
 
 
@@ -78,7 +73,7 @@ public class ListarDogs extends AppCompatActivity {
             if (dog != null) {
                 switch(position){
                     case 1:
-                        Intent intent = new Intent(ListarDogs.this, DetailActivity.class);
+                        Intent intent = new Intent(ListarDogs.this, DogDetailActivity.class);
                         startActivity(intent);
                 }
             }

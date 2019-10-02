@@ -1,13 +1,10 @@
 package com.tinderdog.repository.helper.sqlite;
 
-import android.app.Application;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.tinderdog.MainActivity;
 import com.tinderdog.TinderDogApp;
-import com.tinderdog.util.LoggerWrapper;
 
 public class LocalDBHelper extends SQLiteOpenHelper {
 

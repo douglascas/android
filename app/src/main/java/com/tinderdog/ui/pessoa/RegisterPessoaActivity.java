@@ -1,37 +1,24 @@
-package com.tinderdog;
+package com.tinderdog.ui.pessoa;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 
-import com.tinderdog.adapters.DogAdapter;
-import com.tinderdog.controllers.PessoaController;
-import com.tinderdog.models.Dog;
+import com.tinderdog.R;
 import com.tinderdog.models.usuario.Endereco;
 import com.tinderdog.models.usuario.Pessoa;
 import com.tinderdog.models.usuario.Login;
 import com.tinderdog.controllers.Facade;
-import com.tinderdog.repository.api.IDogRepository;
-import com.tinderdog.repository.api.IPessoaRepository;
 import com.tinderdog.repository.exception.pessoa.InsertPessoaException;
-import com.tinderdog.repository.factoy.PessoaRepositoryFactory;
 import com.tinderdog.ui.login.LoginActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.view.Gravity;
-import android.graphics.Color;
-import android.widget.AdapterView;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.List;
-import java.util.ArrayList;
+import android.widget.EditText;
+
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class RegisterPessoaActivity extends AppCompatActivity {
 
     private Button mbtnLogin;
     private Button mBtnCadastrar;
@@ -69,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         mbtnLogin.setOnClickListener(v -> {
-            //Intent intent = new Intent(MainActivity.this,LoginAcitivity.class);
+            //Intent intent = new Intent(RegisterPessoaActivity.this,LoginAcitivity.class);
             //startActivity(intent);
         });
 
@@ -97,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println(e.getMessage());
             }
 
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            Intent intent = new Intent(RegisterPessoaActivity.this, LoginActivity.class);
             startActivity(intent);
 
         });
@@ -117,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println(e.getMessage());
             }
 
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            Intent intent = new Intent(RegisterPessoaActivity.this, LoginActivity.class);
             startActivity(intent);
 
         });

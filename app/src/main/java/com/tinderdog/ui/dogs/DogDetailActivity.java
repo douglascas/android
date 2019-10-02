@@ -1,4 +1,4 @@
-package com.tinderdog;
+package com.tinderdog.ui.dogs;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.tinderdog.R;
+
 import java.util.List;
 
-public class DetailActivity extends AppCompatActivity {
+public class DogDetailActivity extends AppCompatActivity {
 
     private Button btnAdote;
     private Intent mIntent;

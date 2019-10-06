@@ -87,6 +87,11 @@ public class PessoaController implements IPessoaController {
             return;
         }
 
+        if(pessoa.getNome().equals("") || pessoa.getCpf().equals("") || pessoa.getDt_nascimento().equals("") || pessoa.getEndereco() == null){
+            error.accept(R.string.register_invalid);
+            return;
+        }
+
         if (pessoa.getLogin() == null){
             error.accept(R.string.register_fatal_error);
             return;

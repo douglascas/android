@@ -6,6 +6,17 @@
     <string name="app_name">TinderDog</string>
     <string name="texto_cabecalho">Cachorros</string>
 
+    <string name="hint_fullname">Full Name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_cpf">CPF</string>
+    <string name="hint_dt_birthday">Data de Nascimento</string>
+    <string name="hint_cep">CEP</string>
+    <string name="hint_logradouro">Logradouro</string>
+    <string name="hint_neighborhood">Bairro</string>
+    <string name="hint_city">Cidade</string>
+    <string name="hint_state">Estado</string>
+
     <string name="nenhum_dog">Nenhum cachorro cadastrado</string>
     <string name="porte_grande">Grande</string>
     <string name="porte_medio">Medio</string>

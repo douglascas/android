@@ -34,6 +34,7 @@ public class RegisterPessoaActivity extends AppCompatActivity {
     private EditText etBairro;
     private EditText etCidade;
     private EditText etEstado;
+    private String validation = "";
     private Facade facade = Facade.getInstance();
 
 
@@ -75,21 +76,51 @@ public class RegisterPessoaActivity extends AppCompatActivity {
             String cidade = etCidade.getText().toString();
             String estado = etEstado.getText().toString();
 
-           Endereco endereco = new Endereco(cep,logradouro,bairro,cidade,estado);
-           Login login = new Login(1,email,senha);
+            System.out.println(email);
+            Toast.makeText(getApplicationContext(), email, Toast.LENGTH_SHORT).show();
 
-           Pessoa pessoa = new Pessoa(1,login,nome,cpf,dtNascimento,endereco,null);
 
-            facade.register(pessoa, ()->{
-                //Pessoa registrada com sucesso!
-                Intent intent = new Intent(RegisterPessoaActivity.this, LoginActivity.class);
-                startActivity(intent);
-                //Todo: Login automatico.
-            }, (error)->{
-                //Erro
-                Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT).show();
-            });
+            if(email.equals("")){
+                validation = "Email Inválido";
+            }else if(senha.equals("")){
+                validation = "Senha Inválida";
+            }else if(nome.equals("")){
+                validation = "Nome Inválido";
+            }else if(cpf.equals("")){
+                validation = "Cpf Inválido";
+            }else if(dtNascimento.equals("")){
+                validation = "Data de Nascimento Inválida";
+            }else if(cep.equals("")){
+                validation = "Cep Inválido";
+            }else if(logradouro.equals("")){
+                validation = "Logradouro Inválido";
+            }else if(bairro.equals("")){
+                validation = "Bairro Inválido";
+            }else if(cidade.equals("")){
+                validation = "Cidade Inválido";
+            }else if(estado.equals("")){
+                validation = "Estado Inválido";
+            }
 
+            if(validation.equals("")){
+                Endereco endereco = new Endereco(cep,logradouro,bairro,cidade,estado);
+                Login login = new Login(1,email,senha);
+
+                Pessoa pessoa = new Pessoa(1,login,nome,cpf,dtNascimento,endereco,null);
+
+                facade.register(pessoa, ()->{
+                    //Pessoa registrada com sucesso!
+                    Intent intent = new Intent(RegisterPessoaActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    //Todo: Login automatico.
+                }, (error)->{
+                    //Erro
+                    Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT).show();
+                });
+            }else{
+                Toast.makeText(getApplicationContext(), validation, Toast.LENGTH_SHORT).show();
+
+            }
         });
 
 

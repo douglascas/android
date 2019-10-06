@@ -9,6 +9,7 @@ import android.widget.Button;
 import com.tinderdog.R;
 import com.tinderdog.models.Dog;
 import com.tinderdog.ui.dogs.ListarDogs;
+import com.tinderdog.ui.dogs.RegisterDogActivity;
 import com.tinderdog.ui.pessoa.RegisterPessoaActivity;
 import com.tinderdog.ui.dogs.ListarDogs;
 
@@ -30,19 +31,14 @@ public class ActionChoiceActivity extends AppCompatActivity {
         mbtnAdotar =  findViewById(R.id.btnAdote);
         mBtnCadastrarDog =  findViewById(R.id.btnAddDog);
 
-        mbtnAdotar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ActionChoiceActivity.this,ListarDogs.class);
-                startActivity(intent);
-            }
+        mbtnAdotar.setOnClickListener(v -> {
+            Intent intent = new Intent(ActionChoiceActivity.this,ListarDogs.class);
+            startActivity(intent);
         });
 
-        mBtnCadastrarDog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //CadastrarDog;
-            }
+        mBtnCadastrarDog.setOnClickListener(v -> {
+            Intent intent = new Intent(ActionChoiceActivity.this, RegisterDogActivity.class);
+            startActivity(intent);
         });
     }
 

@@ -34,8 +34,6 @@ public class ListarDogs extends AppCompatActivity {
         listView.setEmptyView(findViewById(android.R.id.empty));
 
 
-
-
         Pessoa donoExemplo = new Pessoa(-1, null, "NomePessoa", "","",
                 new Endereco("","","","",""),null);
 
@@ -44,6 +42,8 @@ public class ListarDogs extends AppCompatActivity {
         dogs.add(new Dog(2, donoExemplo, "mel", "preto", 2, "pequeno"));
         dogs.add(new Dog(3, donoExemplo, "caramelo", "amarelo", 1, "grande"));
         dogs.add(new Dog(4, donoExemplo, "thor", "branco", 4, "medio"));
+
+        adapter = new DogAdapter(this,dogs);
 
 
         //header e footer -costumizar

@@ -60,7 +60,10 @@ public class PessoaController implements IPessoaController {
     }
 
     @Override
-    public Pessoa getPessoaByEmail(String email){
+    public Pessoa getPessoaByEmail(String email) throws PessoaNotFoundException {
+        if(pessoaRepositorio.getByEmail(email) == null)
+            throw new PessoaNotFoundException();
+
         return pessoaRepositorio.getByEmail(email);
     }
 

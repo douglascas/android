@@ -18,6 +18,7 @@ import android.widget.EditText;
 
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class RegisterPessoaActivity extends AppCompatActivity {
 
@@ -79,14 +80,15 @@ public class RegisterPessoaActivity extends AppCompatActivity {
 
            Pessoa pessoa = new Pessoa(1,login,nome,cpf,dtNascimento,endereco,null);
 
-            try {
-                facade.insertPessoa(pessoa);
-            } catch ( InsertPessoaException e) {
-                System.out.println(e.getMessage());
-            }
-
-            Intent intent = new Intent(RegisterPessoaActivity.this, LoginActivity.class);
-            startActivity(intent);
+            facade.register(pessoa, ()->{
+                //Pessoa registrada com sucesso!
+                Intent intent = new Intent(RegisterPessoaActivity.this, LoginActivity.class);
+                startActivity(intent);
+                //Todo: Login automatico.
+            }, (error)->{
+                //Erro
+                Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT).show();
+            });
 
         });
 

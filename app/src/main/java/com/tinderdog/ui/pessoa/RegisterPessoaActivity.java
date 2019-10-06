@@ -17,11 +17,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.widget.EditText;
 
 import android.widget.Button;
+import android.widget.TextView;
 
 public class RegisterPessoaActivity extends AppCompatActivity {
 
-    private Button mbtnLogin;
-    private Button mBtnCadastrar;
+    private Button mbtnRegister;
+    private TextView linkLogin;
     private EditText etEmail;
     private EditText etSenha;
     private EditText etNome;
@@ -40,7 +41,8 @@ public class RegisterPessoaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_pessoa);
 
-        mbtnLogin =  findViewById(R.id.btnLogin);
+        linkLogin = findViewById(R.id.lnkLogin);
+        mbtnRegister =  findViewById(R.id.btnLogin);
 
         etEmail = findViewById(R.id.txtEmail);
         etSenha = findViewById(R.id.txtPwd);
@@ -54,12 +56,12 @@ public class RegisterPessoaActivity extends AppCompatActivity {
         etEstado = findViewById(R.id.txtEstado);
 
 
-        mbtnLogin.setOnClickListener(v -> {
-            //Intent intent = new Intent(RegisterPessoaActivity.this,LoginAcitivity.class);
-            //startActivity(intent);
+        linkLogin.setOnClickListener(v -> {
+            Intent intent = new Intent(RegisterPessoaActivity.this,LoginActivity.class);
+            startActivity(intent);
         });
 
-        mbtnLogin.setOnClickListener(v -> {
+        mbtnRegister.setOnClickListener(v -> {
 
             String email = etEmail.getText().toString();
             String senha = etSenha.getText().toString();

@@ -65,6 +65,11 @@ public class PessoaController implements IPessoaController {
     }
 
     @Override
+    public void insertPessoa(Pessoa pessoa) throws InsertPessoaException {
+
+    }
+
+    @Override
     public void updatePessoa(Pessoa pessoa) throws UpdatePessoaException{
         if(pessoa == null){
             throw new UpdatePessoaException();

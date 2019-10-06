@@ -15,6 +15,7 @@ public interface IPessoaController {
     List<Pessoa> getAllPessoas(int init, int end);
     Pessoa getPessoaById(int id) throws PessoaNotFoundException;
     Pessoa getPessoaByEmail(String email) throws PessoaNotFoundException;
+    void insertPessoa(Pessoa pessoa) throws InsertPessoaException;
     void updatePessoa(Pessoa pessoa) throws UpdatePessoaException;
     void register(Pessoa pessoa, Runnable success, Consumer<Integer> error);
     void deletePessoa(Pessoa pessoa) throws PessoaNotFoundException;

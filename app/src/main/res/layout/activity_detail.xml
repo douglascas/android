@@ -83,13 +83,13 @@
 
         <Button
             android:id="@+id/btnAdote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="117dp"
+            android:layout_height="61dp"
             android:layout_marginBottom="85dp"
             android:layout_marginEnd="142dp"
             android:layout_marginStart="181dp"
             android:layout_marginTop="73dp"
-            android:background="#52673AB7"
+            android:background="@drawable/button_adote"
             android:text="@string/detail_btn_eu_quero"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

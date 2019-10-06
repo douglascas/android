@@ -136,6 +136,11 @@ public class Facade implements IPessoaController, IDogController, ILoginControll
     }
 
     @Override
+    public void insertPessoa(Pessoa pessoa) throws InsertPessoaException {
+        pessoaController.insertPessoa(pessoa);
+    }
+
+    @Override
     public void updatePessoa(Pessoa pessoa) throws UpdatePessoaException {
         pessoaController.updatePessoa(pessoa);
     }

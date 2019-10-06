@@ -9,7 +9,6 @@ import com.tinderdog.models.usuario.Endereco;
 import com.tinderdog.models.usuario.Pessoa;
 import com.tinderdog.models.usuario.Login;
 import com.tinderdog.controllers.Facade;
-import com.tinderdog.repository.exception.pessoa.InsertPessoaException;
 import com.tinderdog.ui.login.LoginActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,10 +16,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.widget.EditText;
 
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class RegisterPessoaActivity extends AppCompatActivity {
 
-    private Button mbtnLogin;
+    private TextView mbtnLogin;
     private Button mBtnCadastrar;
     private EditText etEmail;
     private EditText etSenha;
@@ -38,27 +39,22 @@ public class RegisterPessoaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_register_pessoa);
 
         mBtnCadastrar = findViewById(R.id.btnCadastrar);
-        mbtnLogin =  findViewById(R.id.btnLogin);
+        mbtnLogin =  findViewById(R.id.lnkLogin);
 
-        etEmail = findViewById(R.id.etEmail);
-        etSenha = findViewById(R.id.etSenha);
-        etNome = findViewById(R.id.etNome);
-        etDtNascimento = findViewById(R.id.etData);
-        etCPF = findViewById(R.id.etCPF);
-        etCEP = findViewById(R.id.etCEP);
-        etLogradouro = findViewById(R.id.etLogradouro);
-        etBairro = findViewById(R.id.etBairro);
-        etCidade = findViewById(R.id.etCidade);
-        etEstado = findViewById(R.id.etEstado);
+        etEmail = findViewById(R.id.txtEmail);
+        etSenha = findViewById(R.id.txtPwd);
+        etNome = findViewById(R.id.txtName);
+        etDtNascimento = findViewById(R.id.txtData);
+        etCPF = findViewById(R.id.txtCpf);
+        etCEP = findViewById(R.id.txtCEP);
+        etLogradouro = findViewById(R.id.txtLogradouro);
+        etBairro = findViewById(R.id.textBairro);
+        etCidade = findViewById(R.id.txtCidade);
+        etEstado = findViewById(R.id.txtEstado);
 
-
-        mbtnLogin.setOnClickListener(v -> {
-            //Intent intent = new Intent(RegisterPessoaActivity.this,LoginAcitivity.class);
-            //startActivity(intent);
-        });
 
         mBtnCadastrar.setOnClickListener(v -> {
 
@@ -77,36 +73,22 @@ public class RegisterPessoaActivity extends AppCompatActivity {
            Login login = new Login(1,email,senha);
 
            Pessoa pessoa = new Pessoa(1,login,nome,cpf,dtNascimento,endereco,null);
-
-            try {
-                facade.insertPessoa(pessoa);
-            } catch ( InsertPessoaException e) {
-                System.out.println(e.getMessage());
-            }
-
-            Intent intent = new Intent(RegisterPessoaActivity.this, LoginActivity.class);
-            startActivity(intent);
+           
+            facade.register(pessoa, ()->{
+                //Pessoa registrada com sucesso!
+                Intent intent = new Intent(RegisterPessoaActivity.this, LoginActivity.class);
+                startActivity(intent);
+                //Todo: Login automatico.
+            }, (error)->{
+                //Erro
+                Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT).show();
+            });
 
         });
 
         mbtnLogin.setOnClickListener(v -> {
-
-            Endereco endereco = new Endereco("51202102","Av Conselheiro Aguiar",
-                    "boa viagem","recife","pe");
-            Login login = new Login(2,"marina","123456");
-
-            Pessoa pessoa = new Pessoa(1,login,"Marina","023454545",
-                    "10/04/1995",endereco,null);
-
-            try {
-                facade.insertPessoa(pessoa);
-            } catch ( InsertPessoaException e) {
-                System.out.println(e.getMessage());
-            }
-
             Intent intent = new Intent(RegisterPessoaActivity.this, LoginActivity.class);
             startActivity(intent);
-
         });
 
 

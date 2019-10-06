@@ -1,5 +1,8 @@
 package com.tinderdog.controllers;
 
+import androidx.annotation.StringRes;
+
+import com.tinderdog.R;
 import com.tinderdog.controllers.api.IPessoaController;
 import com.tinderdog.repository.api.ILoginReposiitory;
 import com.tinderdog.repository.api.IPessoaRepository;
@@ -12,6 +15,8 @@ import com.tinderdog.repository.factoy.PessoaRepositoryFactory;
 import com.tinderdog.repository.impl.runtime.LoginRepository;
 
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class PessoaController implements IPessoaController {
 
@@ -55,7 +60,7 @@ public class PessoaController implements IPessoaController {
     }
 
     @Override
-    public Pessoa getPessoaByEmail(String email) throws PessoaNotFoundException {
+    public Pessoa getPessoaByEmail(String email){
         return pessoaRepositorio.getByEmail(email);
     }
 
@@ -68,12 +73,33 @@ public class PessoaController implements IPessoaController {
     }
 
     @Override
-    public void insertPessoa(Pessoa pessoa) throws InsertPessoaException {
+    public void register(Pessoa pessoa, Runnable success, Consumer<Integer> error) {
         if(pessoa == null){
-            throw new InsertPessoaException();
+            error.accept(R.string.register_fatal_error);
+            return;
         }
-        pessoaRepositorio.insert(pessoa);
+
+        if (pessoa.getLogin() == null){
+            error.accept(R.string.register_fatal_error);
+            return;
+        }
+        try {
+            //Email já existe!
+            if (pessoaRepositorio.emailExists(pessoa.getLogin().getEmail())){
+                error.accept(R.string.register_email_already_exists);
+                return;
+            }
+            if (pessoaRepositorio.cpfExists(pessoa.getCpf())){
+                error.accept(R.string.register_cpf_already_exists);
+                return;
+            }
+            pessoaRepositorio.insert(pessoa);
+            success.run();
+        } catch (InsertPessoaException ie){
+            error.accept(R.string.register_fatal_error);
+        }
     }
+
 
     @Override
     public void deletePessoa(Pessoa pessoa) throws PessoaNotFoundException {

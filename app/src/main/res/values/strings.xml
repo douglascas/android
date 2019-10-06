@@ -36,4 +36,7 @@
     <string name="j_sou_cadastrado">Já sou cadastrado</string>
     <string name="detail_gait">Sou porte medio</string>
     <string name="detail_btn_eu_quero">Eu quero</string>
+    <string name="register_fatal_error">Erro fatal</string>
+    <string name="register_email_already_exists">Email já existe</string>
+    <string name="register_cpf_already_exists">CPF já existe</string>
 </resources>

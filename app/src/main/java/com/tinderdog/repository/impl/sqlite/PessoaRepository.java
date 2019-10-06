@@ -61,14 +61,47 @@ public class PessoaRepository implements IPessoaRepository {
     }
 
     @Override
-    public Pessoa getByEmail(String email) throws PessoaNotFoundException {
+    public Pessoa getByEmail(String email){
         Cursor c = dbh.getReadableDatabase()
                 .rawQuery("SELECT * FROM users AS u INNER JOIN user_adresses AS wa ON wa.user_id = u.id WHERE u.email LIKE ?",
                         new String[]{""+email});
         if (!c.moveToNext()) {
-            throw new PessoaNotFoundException();
+            return null;
         }
         return createPessoaInstance(c);
+    }
+
+    @Override
+    public Pessoa getByCPF(String cpf) {
+        Cursor c = dbh.getReadableDatabase()
+                .rawQuery("SELECT * FROM users AS u INNER JOIN user_adresses AS wa ON wa.user_id = u.id WHERE u.cpf LIKE ?",
+                        new String[]{""+cpf});
+        if (!c.moveToNext()) {
+            return null;
+        }
+        return createPessoaInstance(c);
+    }
+
+    @Override
+    public boolean emailExists(String email) {
+        Cursor c = dbh.getReadableDatabase()
+                .rawQuery("SELECT id FROM users AS u INNER JOIN user_adresses AS wa ON wa.user_id = u.id WHERE u.email LIKE ?",
+                        new String[]{""+email});
+
+        boolean res = c.moveToNext();
+        c.close();
+        return res;
+    }
+
+    @Override
+    public boolean cpfExists(String cpf) {
+        Cursor c = dbh.getReadableDatabase()
+                .rawQuery("SELECT id FROM users AS u INNER JOIN user_adresses AS wa ON wa.user_id = u.id WHERE u.cpf LIKE ?",
+                        new String[]{""+cpf});
+
+        boolean res = c.moveToNext();
+        c.close();
+        return res;
     }
 
     @Override

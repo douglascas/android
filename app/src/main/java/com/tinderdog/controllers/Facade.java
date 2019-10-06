@@ -1,5 +1,7 @@
 package com.tinderdog.controllers;
 
+import androidx.annotation.StringRes;
+
 import com.tinderdog.controllers.api.IDogController;
 import com.tinderdog.controllers.api.ILoginController;
 import com.tinderdog.controllers.api.IPessoaController;
@@ -14,6 +16,8 @@ import com.tinderdog.repository.exception.pessoa.PessoaNotFoundException;
 import com.tinderdog.repository.exception.pessoa.UpdatePessoaException;
 
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class Facade implements IPessoaController, IDogController, ILoginController {
 
@@ -137,8 +141,8 @@ public class Facade implements IPessoaController, IDogController, ILoginControll
     }
 
     @Override
-    public void insertPessoa(Pessoa pessoa) throws InsertPessoaException {
-        pessoaController.insertPessoa(pessoa);
+    public void register(Pessoa pessoa, Runnable success, Consumer<Integer> error) {
+        pessoaController.register(pessoa, success, error);
     }
 
     @Override

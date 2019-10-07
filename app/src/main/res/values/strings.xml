@@ -21,6 +21,11 @@
     <string name="porte_grande">Grande</string>
     <string name="porte_medio">Medio</string>
 
+    <string name="hint_age">Idade</string>
+    <string name="hint_name">Nome</string>
+    <string name="hint_carry">Porte</string>
+    <string name="hint_color">Cor</string>
+
     <string name="porte_pequeno">Pequeno</string>
     <string name="title_activity_login">Sign in</string>
     <string name="prompt_email">Email</string>

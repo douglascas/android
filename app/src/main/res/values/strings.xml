@@ -50,8 +50,8 @@
     <string name="logout">Deslogar</string>
     <string name="dog_not_found">Dog não encontrado</string>
     <string name="my_name_is">Meu nome é %s</string>
-    <string name="my_age_is">Minha idade é: %s</string>
-    <string name="my_gait_is">Meu porte é: %s</string>
+    <string name="my_age_is">Idade: %s</string>
+    <string name="my_gait_is">Porte: %s</string>
     <string name="details_generic_error">Erro ao carregar a pagina de detalhes</string>
     <string name="already_registered_login_here">Already Registered? Login here</string>
     <string name="upload_dog_photo">Upload</string>

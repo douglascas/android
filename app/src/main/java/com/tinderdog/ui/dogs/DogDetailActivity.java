@@ -58,7 +58,7 @@ public class DogDetailActivity extends AppCompatActivity {
         Dog dog;
         try {
             dog = facade.getDogById(dog_id);
-            txtName.setText(getString(R.string.my_name_is, dog.getNome()));
+            txtName.setText(dog.getNome());
             txtAge.setText(getString(R.string.my_age_is, dog.getIdade() + ""));
             txtGait.setText(getString(R.string.my_gait_is, dog.getPorte()));
             dogPhoto.setImageBitmap(dog.getPhoto());

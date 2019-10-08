@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="25dp"
-            android:text="Tinder Dog"
+            android:text="@string/app_name"
             android:textAllCaps="true"
             android:textSize="16sp" />
 
@@ -74,7 +74,7 @@
                 android:layout_width="1.5in"
                 android:layout_height="0.3in"
                 android:layout_gravity="center"
-                android:text="Login" />
+                android:text="@string/login" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/register"
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="10dp"
-                android:text="Sign up" />
+                android:text="@string/sign_up" />
 
         </LinearLayout>
 

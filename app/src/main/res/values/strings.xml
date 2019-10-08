@@ -33,6 +33,8 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">Login failed</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign up</string>
     <string name="already_registered">Já sou cadastrado</string>
     <string name="detail_gait">Sou porte medio</string>
     <string name="detail_btn_eu_quero">Eu quero</string>
@@ -51,6 +53,7 @@
     <string name="my_age_is">Minha idade é: %s</string>
     <string name="my_gait_is">Meu porte é: %s</string>
     <string name="details_generic_error">Erro ao carregar a pagina de detalhes</string>
+    <string name="already_registered_login_here">Already Registered? Login here</string>
     <string name="upload_dog_photo">Upload</string>
     <string name="register_new_dog">Cadastrar</string>
 </resources>

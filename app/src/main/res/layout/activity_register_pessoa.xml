@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="15dp"
-            android:text="Tinder Dog"
+            android:text="@string/app_name"
             android:textAllCaps="true"
             android:textSize="16sp" />
 
@@ -192,14 +192,14 @@
             android:layout_width="1.5in"
             android:layout_height="0.3in"
             android:layout_gravity="center"
-            android:text="Sign up" />
+            android:text="@string/sign_up" />
 
         <TextView android:id="@+id/lnkLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="40dp"
-            android:text="Already Registered? Login here"
+            android:text="@string/already_registered_login_here"
             android:gravity="center"
             android:textSize="20dp"
             android:textColor="#3F51B5"

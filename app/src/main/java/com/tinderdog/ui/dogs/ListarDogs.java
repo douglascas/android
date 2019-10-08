@@ -42,7 +42,7 @@ public class ListarDogs extends AppCompatActivity {
         TextView txtHeader = new TextView(this);
         txtHeader.setBackgroundColor(Color.GRAY);
         txtHeader.setTextColor(Color.WHITE);
-        txtHeader.setText(R.string.texto_cabecalho);
+        txtHeader.setText(R.string.list_dogs_header);
         txtHeader.setPadding(PADDING, PADDING, 0, PADDING);
         listView.addHeaderView(txtHeader);
         final TextView txtFooter = new TextView(this);

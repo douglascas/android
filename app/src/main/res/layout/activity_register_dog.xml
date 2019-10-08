@@ -101,7 +101,7 @@
                 android:layout_height="0.3in"
                 android:layout_marginLeft="30px"
                 android:layout_gravity="center"
-                android:text="Upload" />
+                android:text="@string/upload_dog_photo" />
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="wrap_content"
@@ -115,7 +115,7 @@
             android:layout_width="1.5in"
             android:layout_height="0.3in"
             android:layout_gravity="center"
-            android:text="Login" />
+            android:text="@string/register_new_dog" />
 
     </LinearLayout>
 </ScrollView>

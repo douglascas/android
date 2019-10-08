@@ -4,7 +4,7 @@
         <item quantity="other">%d cachorros</item>
     </plurals>
     <string name="app_name">TinderDog</string>
-    <string name="texto_cabecalho">Cachorros</string>
+    <string name="list_dogs_header">Cachorros</string>
 
     <string name="hint_fullname">Full Name</string>
     <string name="hint_email">Email</string>
@@ -17,16 +17,13 @@
     <string name="hint_city">Cidade</string>
     <string name="hint_state">Estado</string>
 
-    <string name="nenhum_dog">Nenhum cachorro cadastrado</string>
-    <string name="porte_grande">Grande</string>
-    <string name="porte_medio">Medio</string>
+    <string name="empty_dog_list">Nenhum cachorro cadastrado</string>
 
     <string name="hint_age">Idade</string>
     <string name="hint_name">Nome</string>
     <string name="hint_carry">Porte</string>
     <string name="hint_color">Cor</string>
 
-    <string name="porte_pequeno">Pequeno</string>
     <string name="title_activity_login">Sign in</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -35,21 +32,8 @@
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
-    <string name="quero_adotar">Quero Adotar</string>
-    <string name="quero_cadastrar">QUERO CADASTRAR</string>
-    <string name="bairro">Bairro:</string>
-    <string name="endereco">Endereço:</string>
-    <string name="estado">Estado:</string>
-    <string name="cidade">Cidade</string>
-    <string name="email">email:</string>
-    <string name="senha">senha:</string>
-    <string name="nome">Nome:</string>
-    <string name="data_nacimento">Data Nacimento:</string>
-    <string name="cep">CEP</string>
-    <string name="cpf">CPF:</string>
-    <string name="cadastrar">Cadastrar</string>
-    <string name="j_sou_cadastrado">Já sou cadastrado</string>
+    <string name="login_failed">Login failed</string>
+    <string name="already_registered">Já sou cadastrado</string>
     <string name="detail_gait">Sou porte medio</string>
     <string name="detail_btn_eu_quero">Eu quero</string>
     <string name="register_fatal_error">Erro fatal</string>
@@ -60,11 +44,13 @@
     <string name="dog_register_all_fields_required">Todos os campos são requeridos</string>
     <string name="dog_register_success">Dog registrado com sucesso</string>
     <string name="register">Registro</string>
-    <string name="adotar">Adotar</string>
+    <string name="adopt">Adotar</string>
     <string name="logout">Deslogar</string>
     <string name="dog_not_found">Dog não encontrado</string>
     <string name="my_name_is">Meu nome é %s</string>
     <string name="my_age_is">Minha idade é: %s</string>
     <string name="my_gait_is">Meu porte é: %s</string>
     <string name="details_generic_error">Erro ao carregar a pagina de detalhes</string>
+    <string name="upload_dog_photo">Upload</string>
+    <string name="register_new_dog">Cadastrar</string>
 </resources>

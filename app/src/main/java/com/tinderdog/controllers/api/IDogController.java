@@ -11,6 +11,7 @@ import com.tinderdog.repository.exception.pessoa.PessoaNotFoundException;
 import com.tinderdog.repository.exception.pessoa.UpdatePessoaException;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public interface IDogController {
     Dog getDog(Dog dog) throws DogNotFoundException;
@@ -20,7 +21,7 @@ public interface IDogController {
     Dog getDogByDono(Pessoa dono);
 
     void updateDog(Dog dog) throws UpdateDogException,DogNotHaveOwnerException;
-    void insertDog(Dog dog) throws InsertDogException,DogNotHaveOwnerException;
+    void insertDog(Dog dog, Runnable success, Consumer<Integer> error);
     void deleteDog(Dog dog) throws DogNotFoundException;
     void deleteDogById(int dog) throws DogNotFoundException,PessoaNotFoundException;
 }

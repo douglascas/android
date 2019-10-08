@@ -56,4 +56,7 @@
     <string name="register_invalid">Campos Inválidos</string>
     <string name="register_email_already_exists">Email já existe</string>
     <string name="register_cpf_already_exists">CPF já existe</string>
+    <string name="dog_register_fatal_error">Erro fatal ao registrar o dog</string>
+    <string name="dog_register_all_fields_required">Todos os campos são requeridos</string>
+    <string name="dog_register_success">Dog registrado com sucesso</string>
 </resources>

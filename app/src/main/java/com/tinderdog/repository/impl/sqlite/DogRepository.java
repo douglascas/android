@@ -14,7 +14,9 @@ import com.tinderdog.repository.exception.dog.UpdateDogException;
 import com.tinderdog.repository.exception.pessoa.PessoaNotFoundException;
 import com.tinderdog.repository.factoy.PessoaRepositoryFactory;
 import com.tinderdog.repository.helper.sqlite.LocalDBHelper;
+import com.tinderdog.util.ImageUtil;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -159,13 +161,14 @@ public class DogRepository implements IDogRepository {
         }
         try {
             SQLiteDatabase db = dbh.getWritableDatabase();
-            db.execSQL("UPDATE dogs SET owner_id = ?, name = ?, age = ?, gait = ?, color = ? WHERE id = ?",
+            db.execSQL("UPDATE dogs SET owner_id = ?, name = ?, age = ?, gait = ?, color = ?, photo = ? WHERE id = ?",
                     new Object[]{
                             dog.getDono().getId(),
                             dog.getNome(),
                             dog.getIdade(),
                             dog.getPorte(),
                             dog.getCor_pelagem(),
+                            ImageUtil.bitmapToByteArr(dog.getPhoto()),
                             dog.getId()
                     });
             db.close();
@@ -180,13 +183,14 @@ public class DogRepository implements IDogRepository {
             throw new DogNotHaveOwnerException();
         }
         SQLiteDatabase db = dbh.getWritableDatabase();
-        db.execSQL("INSERT INTO dogs (owner_id,name,age,gait,color) VALUES (?,?,?,?,?);",
+        db.execSQL("INSERT INTO dogs (owner_id,name,age,gait,color,photo) VALUES (?,?,?,?,?,?);",
                 new Object[]{
                         dog.getDono().getId(),
                         dog.getNome(),
                         dog.getIdade(),
                         dog.getPorte(),
-                        dog.getCor_pelagem()
+                        dog.getCor_pelagem(),
+                        ImageUtil.bitmapToByteArr(dog.getPhoto())
                 });
         db.close();
     }
@@ -222,6 +226,7 @@ public class DogRepository implements IDogRepository {
         dog.setNome(c.getString(c.getColumnIndex("name")));
         dog.setPorte(c.getString(c.getColumnIndex("gait")));
         dog.setCor_pelagem(c.getString(c.getColumnIndex("color")));
+        dog.setPhoto(ImageUtil.byteArrToBitmap(c.getBlob(c.getColumnIndex("photo"))));
         //Não sei se isso vale a pena...
         Pessoa owner;
         if (buildOwner){

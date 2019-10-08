@@ -1,5 +1,6 @@
 package com.tinderdog.controllers;
 
+import com.tinderdog.R;
 import com.tinderdog.controllers.api.IDogController;
 import com.tinderdog.repository.api.IDogRepository;
 import com.tinderdog.models.Dog;
@@ -9,8 +10,10 @@ import com.tinderdog.repository.exception.dog.DogNotFoundException;
 import com.tinderdog.repository.exception.dog.UpdateDogException;
 import com.tinderdog.models.usuario.Pessoa;
 import com.tinderdog.repository.factoy.DogRepositoryFactory;
+import com.tinderdog.repository.factoy.LoginRepositoryFactory;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 
 public class DogController implements IDogController {
@@ -65,11 +68,22 @@ public class DogController implements IDogController {
     }
 
     @Override
-    public void insertDog(Dog dog) throws InsertDogException,DogNotHaveOwnerException {
-        if(dog == null){
-            throw new InsertDogException();
+    public void insertDog(Dog dog, Runnable success, Consumer<Integer> error) {
+        try{
+            if (dog.getCor_pelagem().equals("")
+                    || dog.getIdade() == 0
+                    || dog.getNome().equals("")
+                    || dog.getPorte().equals("")){
+                error.accept(R.string.dog_register_all_fields_required);
+                return;
+            }
+            dog.setDono(LoginRepositoryFactory.getInstance().getRepository().getCurrentUser());
+            repositorio.insert(dog);
+            success.run();
+        } catch (DogNotHaveOwnerException | InsertDogException e) {
+            //Todo:: Melhorar
+            error.accept(R.string.dog_register_fatal_error);
         }
-        repositorio.insert(dog);
     }
 
     @Override

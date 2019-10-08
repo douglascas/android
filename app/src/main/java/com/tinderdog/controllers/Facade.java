@@ -94,8 +94,8 @@ public class Facade implements IPessoaController, IDogController, ILoginControll
     }
 
     @Override
-    public void insertDog(Dog dog) throws InsertDogException, DogNotHaveOwnerException {
-        dogController.insertDog(dog);
+    public void insertDog(Dog dog, Runnable success, Consumer<Integer> error) {
+        dogController.insertDog(dog, success, error);
     }
 
     @Override

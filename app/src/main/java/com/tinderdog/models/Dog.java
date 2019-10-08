@@ -1,6 +1,10 @@
 package com.tinderdog.models;
 
+import android.graphics.Bitmap;
+
 import com.tinderdog.models.usuario.Pessoa;
+
+import java.sql.Blob;
 
 public class Dog {
 
@@ -11,18 +15,28 @@ public class Dog {
     private double idade ;
     private String porte;
     private Pessoa dono;
+    private Bitmap photo;
 
     public Dog(){
 
     }
 
-    public Dog(int id, Pessoa dono, String nome, String cor_pelagem, double idade, String porte) {
+    public Dog(int id, Pessoa dono, String nome, String cor_pelagem, double idade, String porte, Bitmap photo) {
         this.id = id;
         this.nome = nome;
         this.cor_pelagem = cor_pelagem;
         this.idade = idade;
         this.porte = porte;
         this.dono = dono;
+        this.photo = photo;
+    }
+
+    public Dog(String nome, String cor_pelagem, double idade, String porte, Bitmap photo) {
+        this.nome = nome;
+        this.cor_pelagem = cor_pelagem;
+        this.idade = idade;
+        this.porte = porte;
+        this.photo = photo;
     }
 
     public int getId() {
@@ -71,5 +85,13 @@ public class Dog {
 
     public void setDono(Pessoa dono) {
         this.dono = dono;
+    }
+
+    public Bitmap getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Bitmap photo) {
+        this.photo = photo;
     }
 }

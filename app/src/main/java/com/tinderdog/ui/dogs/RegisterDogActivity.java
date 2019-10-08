@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.tinderdog.R;
 import com.tinderdog.controllers.Facade;
@@ -22,6 +24,7 @@ import com.tinderdog.repository.exception.dog.InsertDogException;
 import com.tinderdog.repository.exception.pessoa.InsertPessoaException;
 import com.tinderdog.repository.factoy.LoginRepositoryFactory;
 import com.tinderdog.repository.factoy.PessoaRepositoryFactory;
+import com.tinderdog.ui.ActionChoiceActivity;
 import com.tinderdog.ui.login.LoginActivity;
 import com.tinderdog.ui.pessoa.RegisterPessoaActivity;
 
@@ -48,14 +51,6 @@ public class RegisterDogActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_dog);
 
         mbtnCadastro = findViewById(R.id.btnCadastro);
-        Pessoa pessoa = LoginRepositoryFactory.getInstance().getRepository().getCurrentUser();
-        //Usuário não esta logado existe.
-        if (pessoa == null){
-            //Redireciona para o login
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-        }
-
         etNome = findViewById(R.id.txtEmail);
         etCorPelagem = findViewById(R.id.txtPwd);
         etIdade = findViewById(R.id.txtName);
@@ -64,29 +59,37 @@ public class RegisterDogActivity extends AppCompatActivity {
         imageUpload = findViewById(R.id.image);
 
         mbtnUpload.setOnClickListener(v -> {
-            startActivityForResult(new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI), GET_FROM_GALLERY);
+            startActivityForResult(new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI), GET_FROM_GALLERY);
         });
 
-        mbtnCadastro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mbtnCadastro.setOnClickListener(v -> {
 
-                String nome = etNome.getText().toString();
-                String pelagem = etCorPelagem.getText().toString();
-                double idade  = Double.parseDouble(etIdade.getText().toString());
-                String  porte  = etPorte.getText().toString();
+            String nome = etNome.getText().toString();
+            String pelagem = etCorPelagem.getText().toString();
+            double idade  = Double.parseDouble(etIdade.getText().toString());
+            String  porte  = etPorte.getText().toString();
+            Bitmap photo = ((BitmapDrawable)imageUpload.getDrawable()).getBitmap();
 
-                Dog dog = new Dog(1, pessoa, nome, pelagem, idade, porte);
+            Dog dog = new Dog(nome, pelagem, idade, porte, photo);
 
-                try {
-                    facade.insertDog(dog);
-                } catch (InsertDogException e) {
-                    e.printStackTrace();
-                } catch (DogNotHaveOwnerException e) {
-                    e.printStackTrace();
-                }
-            }
+            facade.insertDog(dog, () -> {
+                //Dog registrado!!
+                Intent intent = new Intent(RegisterDogActivity.this, ActionChoiceActivity.class);
+                startActivity(intent);
+                Toast.makeText(RegisterDogActivity.this, R.string.dog_register_success, Toast.LENGTH_LONG).show();
+            }, (error)-> Toast.makeText(RegisterDogActivity.this, error, Toast.LENGTH_LONG).show());
         });
+    }
+
+    @Override
+    protected void onResume() {
+        if (!LoginRepositoryFactory.getInstance().getRepository().isLogged()){
+            //Usuário não esta logado existe.
+            //Redireciona para o login
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
+        super.onResume();
     }
 
     @Override
@@ -99,9 +102,7 @@ public class RegisterDogActivity extends AppCompatActivity {
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),selectedImage);
                 imageUpload.setImageBitmap(bitmap);
-            }catch (FileNotFoundException e){
-                e.printStackTrace();
-            } catch (IOException e) {
+            } catch (IOException e){
                 e.printStackTrace();
             }
         }

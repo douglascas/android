@@ -38,10 +38,10 @@ public class ListarDogs extends AppCompatActivity {
                 new Endereco("","","","",""),null);
 
         dogs = new ArrayList<>();
-        dogs.add(new Dog(1, donoExemplo, "bob", "branco", 1, "medio"));
-        dogs.add(new Dog(2, donoExemplo, "mel", "preto", 2, "pequeno"));
-        dogs.add(new Dog(3, donoExemplo, "caramelo", "amarelo", 1, "grande"));
-        dogs.add(new Dog(4, donoExemplo, "thor", "branco", 4, "medio"));
+//        dogs.add(new Dog(1, donoExemplo, "bob", "branco", 1, "medio"));
+//        dogs.add(new Dog(2, donoExemplo, "mel", "preto", 2, "pequeno"));
+//        dogs.add(new Dog(3, donoExemplo, "caramelo", "amarelo", 1, "grande"));
+//        dogs.add(new Dog(4, donoExemplo, "thor", "branco", 4, "medio"));
 
         adapter = new DogAdapter(this,dogs);
 

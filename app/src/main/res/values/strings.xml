@@ -59,4 +59,5 @@
     <string name="dog_register_fatal_error">Erro fatal ao registrar o dog</string>
     <string name="dog_register_all_fields_required">Todos os campos são requeridos</string>
     <string name="dog_register_success">Dog registrado com sucesso</string>
+    <string name="register">Registro</string>
 </resources>

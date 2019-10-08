@@ -1,21 +1,18 @@
 package com.tinderdog.ui.dogs;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.widget.ListView;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.tinderdog.R;
 import com.tinderdog.adapters.DogAdapter;
+import com.tinderdog.controllers.Facade;
 import com.tinderdog.models.Dog;
-import com.tinderdog.models.usuario.Endereco;
-import com.tinderdog.models.usuario.Pessoa;
-
-import android.os.Bundle;
-import android.widget.ListView;
-import android.view.Gravity;
-import android.widget.TextView;
-
-import java.util.ArrayList;
-import android.content.Intent;
-import android.graphics.Color;
 
 import java.util.List;
 
@@ -24,6 +21,7 @@ public class ListarDogs extends AppCompatActivity {
     private List<Dog> dogs;
     private DogAdapter adapter;
     private ListView listView;
+    private Facade facade = Facade.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +31,10 @@ public class ListarDogs extends AppCompatActivity {
         listView = findViewById(R.id.list);
         listView.setEmptyView(findViewById(android.R.id.empty));
 
+        //Todo:: Paginar
+        dogs = facade.getAllDogs();
 
-        Pessoa donoExemplo = new Pessoa(-1, null, "NomePessoa", "","",
-                new Endereco("","","","",""),null);
-
-        dogs = new ArrayList<>();
-//        dogs.add(new Dog(1, donoExemplo, "bob", "branco", 1, "medio"));
-//        dogs.add(new Dog(2, donoExemplo, "mel", "preto", 2, "pequeno"));
-//        dogs.add(new Dog(3, donoExemplo, "caramelo", "amarelo", 1, "grande"));
-//        dogs.add(new Dog(4, donoExemplo, "thor", "branco", 4, "medio"));
-
-        adapter = new DogAdapter(this,dogs);
+        adapter = new DogAdapter(this, dogs);
 
 
         //header e footer -costumizar
@@ -71,11 +62,9 @@ public class ListarDogs extends AppCompatActivity {
         listView.setOnItemClickListener((adapterView, view, position, id) -> {
             Dog dog = (Dog) adapterView.getItemAtPosition(position);
             if (dog != null) {
-                switch(position){
-                    case 1:
-                        Intent intent = new Intent(ListarDogs.this, DogDetailActivity.class);
-                        startActivity(intent);
-                }
+                Intent intent = new Intent(ListarDogs.this, DogDetailActivity.class);
+                intent.putExtra("dog_id", dog.getId());
+                startActivity(intent);
             }
         });
 

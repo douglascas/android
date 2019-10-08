@@ -19,7 +19,6 @@ public interface IDogRepository {
     List<Dog> searchForAgeRange(double ageI, double ageE);
     List<Dog> searchForCity(String cityName);
     List<Dog> searchForState(String state);
-
     List<Dog> searchForOwner(int ownerId);
 
     Dog getBy (Pessoa dono);
@@ -29,4 +28,6 @@ public interface IDogRepository {
     void insert(Dog dog) throws InsertDogException, DogNotHaveOwnerException;
     void delete(Dog dog) throws DogNotFoundException;
     void deleteById(int id) throws DogNotFoundException;
+
+    boolean dogExists(int id);
 }

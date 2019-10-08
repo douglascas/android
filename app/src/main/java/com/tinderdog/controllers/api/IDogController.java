@@ -4,11 +4,8 @@ import com.tinderdog.models.Dog;
 import com.tinderdog.models.usuario.Pessoa;
 import com.tinderdog.repository.exception.dog.DogNotFoundException;
 import com.tinderdog.repository.exception.dog.DogNotHaveOwnerException;
-import com.tinderdog.repository.exception.dog.InsertDogException;
 import com.tinderdog.repository.exception.dog.UpdateDogException;
-import com.tinderdog.repository.exception.pessoa.InsertPessoaException;
 import com.tinderdog.repository.exception.pessoa.PessoaNotFoundException;
-import com.tinderdog.repository.exception.pessoa.UpdatePessoaException;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -24,4 +21,6 @@ public interface IDogController {
     void insertDog(Dog dog, Runnable success, Consumer<Integer> error);
     void deleteDog(Dog dog) throws DogNotFoundException;
     void deleteDogById(int dog) throws DogNotFoundException,PessoaNotFoundException;
+
+    boolean dogExists(int id);
 }

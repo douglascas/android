@@ -17,6 +17,11 @@ public class LoginRepository implements ILoginReposiitory {
     }
 
     @Override
+    public void logout() {
+        currentUser = null;
+    }
+
+    @Override
     public Pessoa getCurrentUser() {
         return currentUser;
     }

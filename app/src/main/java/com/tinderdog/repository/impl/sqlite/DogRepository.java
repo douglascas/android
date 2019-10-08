@@ -16,7 +16,6 @@ import com.tinderdog.repository.factoy.PessoaRepositoryFactory;
 import com.tinderdog.repository.helper.sqlite.LocalDBHelper;
 import com.tinderdog.util.ImageUtil;
 
-import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -146,7 +145,7 @@ public class DogRepository implements IDogRepository {
     @Override
     public Dog getById(int id) throws DogNotFoundException {
         Cursor c = dbh.getReadableDatabase()
-                .rawQuery("SELECT * FROM dog WHERE id = ?",
+                .rawQuery("SELECT * FROM dogs WHERE id = ?",
                         new String[]{id + ""});
         if (!c.moveToNext()) {
             throw new DogNotFoundException();
@@ -213,6 +212,16 @@ public class DogRepository implements IDogRepository {
         db.execSQL("DELETE FROM dogs WHERE id = ?;", new Object[]{dogId});
         db.close();
         c.close();
+    }
+
+    @Override
+    public boolean dogExists(int id) {
+        Cursor c = dbh.getReadableDatabase()
+                .rawQuery("SELECT id FROM dogs WHERE id = ?",
+                        new String[]{id + ""});
+        boolean r = c.moveToNext();
+        c.close();
+        return r;
     }
 
     private Dog createDogInstance(Cursor c){

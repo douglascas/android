@@ -16,7 +16,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/dogPhoto"
             android:layout_width="208dp"
             android:layout_height="157dp"
             android:layout_marginBottom="469dp"
@@ -32,69 +32,75 @@
             app:srcCompat="@drawable/dog1" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/txtName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="384dp"
-            android:layout_marginEnd="168dp"
             android:layout_marginStart="185dp"
             android:layout_marginTop="65dp"
+            android:layout_marginEnd="168dp"
+            android:layout_marginBottom="384dp"
             android:text="Ola ,eu sou o Bob"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.569"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/dogPhoto"
+            app:layout_constraintVertical_bias="0.692" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/txtAge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="298dp"
-            android:layout_marginEnd="159dp"
             android:layout_marginStart="194dp"
             android:layout_marginTop="60dp"
+            android:layout_marginEnd="159dp"
+            android:layout_marginBottom="298dp"
             android:text="Tenho 3 anos"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.602"
+            app:layout_constraintHorizontal_bias="0.704"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:layout_constraintVertical_bias="0.461" />
+            app:layout_constraintTop_toBottomOf="@+id/txtName"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/tvPorte"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="213dp"
-            android:layout_marginEnd="159dp"
             android:layout_marginStart="194dp"
             android:layout_marginTop="59dp"
+            android:layout_marginEnd="159dp"
+            android:layout_marginBottom="213dp"
             android:text="@string/detail_gait"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.65"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/txtAge"
+            app:layout_constraintVertical_bias="1.0" />
 
         <Button
             android:id="@+id/btnAdote"
             android:layout_width="117dp"
             android:layout_height="61dp"
-            android:layout_marginBottom="85dp"
-            android:layout_marginEnd="142dp"
             android:layout_marginStart="181dp"
             android:layout_marginTop="73dp"
+            android:layout_marginEnd="142dp"
+            android:layout_marginBottom="85dp"
             android:background="@drawable/button_adote"
             android:text="@string/detail_btn_eu_quero"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPorte" />
+            app:layout_constraintTop_toBottomOf="@+id/tvPorte"
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

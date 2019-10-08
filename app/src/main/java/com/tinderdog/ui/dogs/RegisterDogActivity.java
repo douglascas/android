@@ -1,7 +1,5 @@
 package com.tinderdog.ui.dogs;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,26 +7,20 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.tinderdog.R;
 import com.tinderdog.controllers.Facade;
-import com.tinderdog.models.usuario.Pessoa;
 import com.tinderdog.models.Dog;
-import com.tinderdog.repository.exception.dog.DogNotHaveOwnerException;
-import com.tinderdog.repository.exception.dog.InsertDogException;
-import com.tinderdog.repository.exception.pessoa.InsertPessoaException;
 import com.tinderdog.repository.factoy.LoginRepositoryFactory;
-import com.tinderdog.repository.factoy.PessoaRepositoryFactory;
 import com.tinderdog.ui.ActionChoiceActivity;
 import com.tinderdog.ui.login.LoginActivity;
-import com.tinderdog.ui.pessoa.RegisterPessoaActivity;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class RegisterDogActivity extends AppCompatActivity {
@@ -51,10 +43,10 @@ public class RegisterDogActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_dog);
 
         mbtnCadastro = findViewById(R.id.btnCadastro);
-        etNome = findViewById(R.id.txtEmail);
-        etCorPelagem = findViewById(R.id.txtPwd);
-        etIdade = findViewById(R.id.txtName);
-        etPorte = findViewById(R.id.txtData);
+        etNome = findViewById(R.id.txtName);
+        etCorPelagem = findViewById(R.id.txtCor);
+        etIdade = findViewById(R.id.txtIdade);
+        etPorte = findViewById(R.id.txtPorte);
         mbtnUpload = findViewById(R.id.btnUpload);
         imageUpload = findViewById(R.id.image);
 
@@ -76,7 +68,10 @@ public class RegisterDogActivity extends AppCompatActivity {
                 //Dog registrado!!
                 Intent intent = new Intent(RegisterDogActivity.this, ActionChoiceActivity.class);
                 startActivity(intent);
+                //finishActivity(-1);
                 Toast.makeText(RegisterDogActivity.this, R.string.dog_register_success, Toast.LENGTH_LONG).show();
+                //Previne que o usuário volte a o registro passado
+                finish();
             }, (error)-> Toast.makeText(RegisterDogActivity.this, error, Toast.LENGTH_LONG).show());
         });
     }

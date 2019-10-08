@@ -1,20 +1,15 @@
 package com.tinderdog.adapters;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.view.LayoutInflater;
-
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tinderdog.R;
 import com.tinderdog.models.Dog;
-import com.tinderdog.util.LoggerWrapper;
 
 import java.util.List;
 
@@ -50,11 +45,11 @@ public class DogAdapter extends BaseAdapter {
 
         Dog dog = dogs.get(position);
 
-        ViewHolder holder = null;
+        ViewHolder holder;
 
         if(convertView == null ){ //VIEW NOVA
 
-            Log.d("NGVL", "View Nova => position: " + position);
+//            Log.d("NGVL", "View Nova => position: " + position);
             convertView = LayoutInflater.from(ctx)
                     .inflate(R.layout.item_dog, null);
 
@@ -68,16 +63,11 @@ public class DogAdapter extends BaseAdapter {
 
         }
         else{ //view ja foi criada
-            LoggerWrapper.log("View existente => position: "+ position);
+//            LoggerWrapper.log("View existente => position: "+ position);
             holder = (ViewHolder)convertView.getTag();
         }
 
-        Resources res = ctx.getResources();
-        //ID 1 = dog1,ID2 = dog2,etc
-        TypedArray fotos_dogs = res.obtainTypedArray(R.array.fotos_dogs);
-
-        holder.imgDog.setImageDrawable(
-                fotos_dogs.getDrawable(dog.getId()));
+        holder.imgDog.setImageBitmap(dog.getPhoto());
         holder.txtNome.setText(dog.getNome());
         holder.txtIdade.setText(dog.getIdade()+"");
 

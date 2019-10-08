@@ -1,27 +1,23 @@
 package com.tinderdog.ui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.tinderdog.R;
-import com.tinderdog.models.Dog;
+import com.tinderdog.repository.factoy.LoginRepositoryFactory;
 import com.tinderdog.ui.dogs.ListarDogs;
 import com.tinderdog.ui.dogs.RegisterDogActivity;
-import com.tinderdog.ui.pessoa.RegisterPessoaActivity;
-import com.tinderdog.ui.dogs.ListarDogs;
-
-import java.util.List;
-
-import androidx.appcompat.app.AppCompatActivity;
+import com.tinderdog.ui.login.LoginActivity;
 
 
 public class ActionChoiceActivity extends AppCompatActivity {
 
     private Button mbtnAdotar;
     private Button mBtnCadastrarDog;
+    private Button mBtnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +26,13 @@ public class ActionChoiceActivity extends AppCompatActivity {
 
         mbtnAdotar =  findViewById(R.id.btnAdote);
         mBtnCadastrarDog =  findViewById(R.id.btnAddDog);
+        mBtnLogout = findViewById(R.id.logout);
+        mBtnLogout.setOnClickListener(v -> {
+            LoginRepositoryFactory.getInstance().getRepository().logout();
+            Intent intent = new Intent(ActionChoiceActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
         mbtnAdotar.setOnClickListener(v -> {
             Intent intent = new Intent(ActionChoiceActivity.this,ListarDogs.class);

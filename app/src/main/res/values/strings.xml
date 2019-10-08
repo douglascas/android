@@ -60,4 +60,11 @@
     <string name="dog_register_all_fields_required">Todos os campos são requeridos</string>
     <string name="dog_register_success">Dog registrado com sucesso</string>
     <string name="register">Registro</string>
+    <string name="adotar">Adotar</string>
+    <string name="logout">Deslogar</string>
+    <string name="dog_not_found">Dog não encontrado</string>
+    <string name="my_name_is">Meu nome é %s</string>
+    <string name="my_age_is">Minha idade é: %s</string>
+    <string name="my_gait_is">Meu porte é: %s</string>
+    <string name="details_generic_error">Erro ao carregar a pagina de detalhes</string>
 </resources>

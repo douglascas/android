@@ -1,7 +1,5 @@
 package com.tinderdog.controllers;
 
-import androidx.annotation.StringRes;
-
 import com.tinderdog.controllers.api.IDogController;
 import com.tinderdog.controllers.api.ILoginController;
 import com.tinderdog.controllers.api.IPessoaController;
@@ -9,7 +7,6 @@ import com.tinderdog.models.Dog;
 import com.tinderdog.models.usuario.Pessoa;
 import com.tinderdog.repository.exception.dog.DogNotFoundException;
 import com.tinderdog.repository.exception.dog.DogNotHaveOwnerException;
-import com.tinderdog.repository.exception.dog.InsertDogException;
 import com.tinderdog.repository.exception.dog.UpdateDogException;
 import com.tinderdog.repository.exception.pessoa.InsertPessoaException;
 import com.tinderdog.repository.exception.pessoa.PessoaNotFoundException;
@@ -17,7 +14,6 @@ import com.tinderdog.repository.exception.pessoa.UpdatePessoaException;
 
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
 
 public class Facade implements IPessoaController, IDogController, ILoginController {
 
@@ -108,8 +104,13 @@ public class Facade implements IPessoaController, IDogController, ILoginControll
         dogController.deleteDogById(dog);
     }
 
+    @Override
+    public boolean dogExists(int id) {
+        return dogController.dogExists(id);
+    }
 
-//    Pessoa Controller
+
+    //    Pessoa Controller
     @Override
     public Pessoa getPessoa(Pessoa pessoa) throws PessoaNotFoundException {
         return pessoaController.getPessoa(pessoa);

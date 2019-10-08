@@ -2,13 +2,13 @@ package com.tinderdog.controllers;
 
 import com.tinderdog.R;
 import com.tinderdog.controllers.api.IDogController;
-import com.tinderdog.repository.api.IDogRepository;
 import com.tinderdog.models.Dog;
+import com.tinderdog.models.usuario.Pessoa;
+import com.tinderdog.repository.api.IDogRepository;
+import com.tinderdog.repository.exception.dog.DogNotFoundException;
 import com.tinderdog.repository.exception.dog.DogNotHaveOwnerException;
 import com.tinderdog.repository.exception.dog.InsertDogException;
-import com.tinderdog.repository.exception.dog.DogNotFoundException;
 import com.tinderdog.repository.exception.dog.UpdateDogException;
-import com.tinderdog.models.usuario.Pessoa;
 import com.tinderdog.repository.factoy.DogRepositoryFactory;
 import com.tinderdog.repository.factoy.LoginRepositoryFactory;
 
@@ -97,5 +97,10 @@ public class DogController implements IDogController {
     @Override
     public void deleteDogById(int dog) throws DogNotFoundException {
         repositorio.deleteById(dog);
+    }
+
+    @Override
+    public boolean dogExists(int id) {
+        return repositorio.dogExists(id);
     }
 }
